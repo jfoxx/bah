@@ -1,0 +1,150 @@
+/* Cards Teaser: values extracted from boozallen.com .horizontal-card-container */
+
+/* track: swipeable row on small screens (source uses a one-up swiper) */
+.cards-teaser > ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 100%;
+  gap: 10px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.cards-teaser > ul::-webkit-scrollbar {
+  display: none;
+}
+
+.cards-teaser .cards-teaser-card {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  min-height: 368px;
+  margin: 0 auto;
+  color: var(--dark-color);
+  scroll-snap-align: start;
+}
+
+/* image */
+.cards-teaser .cards-teaser-image {
+  line-height: 0;
+}
+
+.cards-teaser .cards-teaser-image p {
+  margin: 0;
+}
+
+.cards-teaser .cards-teaser-image picture {
+  display: block;
+}
+
+.cards-teaser .cards-teaser-image img {
+  display: block;
+  width: 100%;
+  height: 168px;
+  object-fit: cover;
+}
+
+/* text */
+.cards-teaser .cards-teaser-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 25px 10px 15px 0;
+}
+
+.cards-teaser .cards-teaser-body > * {
+  margin: 0;
+}
+
+.cards-teaser .cards-teaser-body a:any-link {
+  color: var(--dark-color);
+  text-decoration: none;
+}
+
+.cards-teaser .cards-teaser-eyebrow {
+  padding-bottom: 15px;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 27px;
+  letter-spacing: normal;
+}
+
+.cards-teaser .cards-teaser-eyebrow a:any-link {
+  color: #00636d;
+}
+
+.cards-teaser .cards-teaser-eyebrow a:hover {
+  text-decoration: underline;
+}
+
+.cards-teaser .cards-teaser-title {
+  padding-bottom: 15px;
+  color: var(--heading-color);
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 22px;
+  letter-spacing: normal;
+}
+
+.cards-teaser .cards-teaser-body .cards-teaser-title a:hover,
+.cards-teaser .cards-teaser-body .cards-teaser-cta a:hover {
+  color: #00636d;
+}
+
+.cards-teaser .cards-teaser-description {
+  margin-bottom: 18px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 20.8px;
+  letter-spacing: -0.5px;
+}
+
+/* arrow link pinned to the card bottom */
+.cards-teaser .cards-teaser-body .cards-teaser-cta {
+  margin-top: auto;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 30px;
+  letter-spacing: normal;
+}
+
+.cards-teaser .cards-teaser-cta a::after {
+  content: '';
+  display: inline-block;
+  width: 21px;
+  height: 15px;
+  margin-left: 4px;
+  vertical-align: middle;
+  background-color: currentcolor;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 21 15'%3E%3Cpath d='M20.7071 8.20711C21.0976 7.81658 21.0976 7.18342 20.7071 6.7929L14.3431 0.428933C13.9526 0.038409 13.3195 0.038409 12.9289 0.428933C12.5384 0.819458 12.5384 1.45262 12.9289 1.84315L18.5858 7.5L12.9289 13.1569C12.5384 13.5474 12.5384 14.1805 12.9289 14.5711C13.3195 14.9616 13.9526 14.9616 14.3431 14.5711L20.7071 8.20711ZM0 8.5L20 8.5L20 6.5L0 6.5L0 8.5Z'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+@media (width >= 600px) {
+  .cards-teaser > ul {
+    grid-auto-columns: minmax(294px, 1fr);
+    gap: 24px;
+
+    /* overflow only happens below ~1440px; keep a scrollbar for mouse users */
+    scrollbar-width: thin;
+  }
+
+  .cards-teaser > ul::-webkit-scrollbar {
+    display: initial;
+  }
+}
+
+@media (width >= 900px) {
+  .cards-teaser .cards-teaser-card {
+    max-width: 275px;
+  }
+
+  .cards-teaser .cards-teaser-body {
+    padding-top: 20px;
+  }
+}

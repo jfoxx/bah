@@ -10,6 +10,9 @@ import {
   loadSections,
   loadCSS,
   buildBlock,
+  readBlockConfig,
+  toClassName,
+  toCamelCase,
 } from './aem.js';
 
 if (window.trustedTypes && window.trustedTypes.createPolicy) {
@@ -143,6 +146,31 @@ function decorateButtons(main) {
 }
 
 /**
+ * Applies section-metadata blocks: `style` values become section classes,
+ * other keys become data attributes. The metadata wrapper is removed.
+ * @param {Element} main The main container element
+ */
+function decorateSectionMetadata(main) {
+  main.querySelectorAll(':scope > .section div.section-metadata').forEach((sectionMeta) => {
+    const section = sectionMeta.closest('.section');
+    const meta = readBlockConfig(sectionMeta);
+    Object.entries(meta).forEach(([key, value]) => {
+      if (key === 'style') {
+        `${value}`.split(',')
+          .map((style) => toClassName(style.trim()))
+          .filter(Boolean)
+          .forEach((style) => section.classList.add(style));
+      } else {
+        section.dataset[toCamelCase(key)] = value;
+      }
+    });
+    const wrapper = sectionMeta.parentElement;
+    if (wrapper !== section && wrapper.children.length === 1) wrapper.remove();
+    else sectionMeta.remove();
+  });
+}
+
+/**
  * Decorates the main element.
  * @param {Element} main The main element
  */
@@ -151,6 +179,7 @@ export function decorateMain(main) {
   decorateIcons(main);
   buildAutoBlocks(main);
   decorateSections(main);
+  decorateSectionMetadata(main);
   decorateBlocks(main);
   decorateButtons(main);
 }

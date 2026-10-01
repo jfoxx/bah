@@ -1,0 +1,112 @@
+/* Columns Media - values extracted from boozallen.com .grid-layout__row (large-6 columns) */
+.columns-media {
+  color: var(--dark-color);
+}
+
+.columns-media .columns-media-row {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.columns-media .columns-media-row + .columns-media-row {
+  margin-top: 48px;
+}
+
+.columns-media .columns-media-row > div {
+  min-width: 0;
+}
+
+/* media cell */
+.columns-media .columns-media-media {
+  order: -1;
+  position: relative;
+  line-height: 0;
+}
+
+.columns-media .columns-media-media p {
+  margin: 0;
+}
+
+.columns-media .columns-media-media img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.columns-media .columns-media-media video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+.columns-media .columns-media-media.columns-media-video-playing video {
+  opacity: 1;
+}
+
+/* text cell */
+.columns-media .columns-media-text > :first-child {
+  margin-top: 0;
+}
+
+.columns-media .columns-media-text h2 {
+  margin: 0 0 28px;
+  font-size: 32px;
+  font-weight: 300;
+  line-height: 1.2;
+  letter-spacing: -1px;
+}
+
+.columns-media .columns-media-text h4 {
+  margin: 0 0 18px;
+}
+
+.columns-media .columns-media-text h5 {
+  margin: 0 0 7px;
+}
+
+.columns-media .columns-media-text p {
+  margin: 0 0 18px;
+  color: var(--dark-color);
+  font-size: 18px;
+  line-height: 28.8px;
+  letter-spacing: -0.5px;
+}
+
+.columns-media .columns-media-text p.button-wrapper {
+  margin: 0 0 30px;
+}
+
+.columns-media .columns-media-text > :last-child:not(.button-wrapper) {
+  margin-bottom: 0;
+}
+
+@media (width >= 900px) {
+  .columns-media .columns-media-row {
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .columns-media .columns-media-row > div {
+    flex: 1 1 0;
+  }
+
+  .columns-media .columns-media-media {
+    order: 0;
+  }
+
+  /* source has a 30px spacer above the text when the text sits on the left */
+  .columns-media .columns-media-media-end .columns-media-text {
+    padding-top: 30px;
+  }
+
+  .columns-media .columns-media-text h2 {
+    padding-right: 60px;
+    font-size: 44px;
+  }
+}

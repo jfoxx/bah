@@ -1,0 +1,20 @@
+{
+  "variantName": "carousel-split",
+  "baseBlock": "carousel",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "spacious",
+    "purpose": "featured-stories",
+    "imagePattern": "split-fullbleed",
+    "structure": "eyebrow + heading + paragraph + button | image, bar pagination"
+  },
+  "contentPattern": "eyebrow + heading + paragraph + button | image, bar pagination",
+  "usage": {
+    "pagesUsing": ["https://www.boozallen.com/"],
+    "reuseCount": 1,
+    "lastUsed": "2026-10-01"
+  },
+  "options": [],
+  "memberVariantIds": ["carousel-split"]
+}

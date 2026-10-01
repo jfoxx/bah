@@ -1,0 +1,20 @@
+{
+  "variantName": "hero-video",
+  "baseBlock": "hero",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "colorScheme": "dark",
+    "density": "minimal",
+    "purpose": "brand-hero",
+    "imagePattern": "fullbleed-video",
+    "structure": "background image + background video + scroll indicator"
+  },
+  "contentPattern": "background image + background video + scroll indicator",
+  "usage": {
+    "pagesUsing": ["https://www.boozallen.com/"],
+    "reuseCount": 1,
+    "lastUsed": "2026-10-01"
+  },
+  "options": [],
+  "memberVariantIds": ["hero-video"]
+}

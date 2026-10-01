@@ -1,0 +1,20 @@
+{
+  "variantName": "cards-teaser",
+  "baseBlock": "cards",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "balanced",
+    "purpose": "teaser-grid",
+    "imagePattern": "landscape-thumb",
+    "structure": "image + optional eyebrow + title link + optional description + arrow link"
+  },
+  "contentPattern": "image + optional eyebrow + title link + optional description + arrow link",
+  "usage": {
+    "pagesUsing": ["https://www.boozallen.com/"],
+    "reuseCount": 2,
+    "lastUsed": "2026-10-01"
+  },
+  "options": [],
+  "memberVariantIds": ["cards-teaser"]
+}

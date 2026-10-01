@@ -1,0 +1,20 @@
+{
+  "variantName": "columns-media",
+  "baseBlock": "columns",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "spacious",
+    "purpose": "media-text-promo",
+    "imagePattern": "large-half",
+    "structure": "image + heading + paragraph + button"
+  },
+  "contentPattern": "image + heading + paragraph + button",
+  "usage": {
+    "pagesUsing": ["https://www.boozallen.com/"],
+    "reuseCount": 2,
+    "lastUsed": "2026-10-01"
+  },
+  "options": [],
+  "memberVariantIds": ["columns-media"]
+}

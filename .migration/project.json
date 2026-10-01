@@ -1,0 +1,11 @@
+{
+  "type": "da",
+  "sites": {
+    "bah": {
+      "previewOrg": "jfoxx",
+      "previewSite": "bah",
+      "contentHostUrl": "https://content.da.live/jfoxx/bah/",
+      "libraryUrl": "https://main--sta-boilerplate--aemdemos.aem.page/tools/sidekick/library.json"
+    }
+  }
+}

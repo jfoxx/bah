@@ -1,0 +1,117 @@
+{
+  "templates": [
+    {
+      "name": "home",
+      "urls": [
+        "https://www.boozallen.com/"
+      ],
+      "representativeUrl": "https://www.boozallen.com/",
+      "description": "Booz Allen homepage: video hero, mission statement, news feature + article cards, featured stories carousel, careers promo + explore cards",
+      "blocks": [
+        {
+          "name": "hero-video",
+          "instances": [
+            ".cyber-hero"
+          ]
+        },
+        {
+          "name": "columns-media",
+          "instances": [
+            ".grid-layout__row:has(> .large-6.grid-layout__column)"
+          ]
+        },
+        {
+          "name": "cards-teaser",
+          "instances": [
+            ".horizontal-card-container"
+          ]
+        },
+        {
+          "name": "carousel-split",
+          "instances": [
+            ".full-section-carousel"
+          ]
+        }
+      ],
+      "urlPattern": "/",
+      "sections": [
+        {
+          "id": "rc1",
+          "name": "Hero (video/brand animation)",
+          "selector": [
+            ".aem-Grid > .cyber_hero",
+            "body > div:nth-of-type(2) > div.aem-Grid > div.aem-GridColumn:nth-child(1)"
+          ],
+          "style": null,
+          "blocks": [
+            "hero-video"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "rc2",
+          "name": "Mission statement",
+          "selector": [
+            ".aem-Grid > .grid-layout__wrapper:has(> .grid-layout > .grid-layout__row.grid-layout-full-width)",
+            "body > div:nth-of-type(2) > div.aem-Grid > div.aem-GridColumn:nth-child(2)"
+          ],
+          "style": "dark",
+          "blocks": [],
+          "defaultContent": [
+            ".grid-layout-full-width h2",
+            ".grid-layout-full-width .cmp-text p",
+            ".grid-layout-full-width .button-wrapper a"
+          ]
+        },
+        {
+          "id": "rc3",
+          "name": "News feature + Tech at Full Speed",
+          "selector": [
+            ".aem-Grid > .grid-layout__wrapper:has(> .grid-layout.min-height--default .content-cards-layout)",
+            "body > div:nth-of-type(2) > div.aem-Grid > div.aem-GridColumn:nth-child(3)"
+          ],
+          "style": "pattern-waves",
+          "blocks": [
+            "columns-media",
+            "cards-teaser"
+          ],
+          "defaultContent": [
+            ".content-cards-layout__content > div:first-child h3"
+          ]
+        },
+        {
+          "id": "rc4",
+          "name": "Featured stories carousel",
+          "selector": [
+            ".aem-GridColumn:has(> .full-section-carousel)",
+            "body > div:nth-of-type(2) > div.aem-Grid > div.aem-GridColumn:nth-child(4)"
+          ],
+          "style": null,
+          "blocks": [
+            "carousel-split"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "rc5",
+          "name": "Careers + Explore More",
+          "selector": [
+            ".aem-Grid > .grid-layout__wrapper:has(> .grid-layout.min-height--unset .content-cards-layout)",
+            "body > div:nth-of-type(2) > div.aem-Grid > div.aem-GridColumn:nth-child(5)"
+          ],
+          "style": "pattern-rings",
+          "blocks": [
+            "columns-media",
+            "cards-teaser"
+          ],
+          "defaultContent": [
+            ".content-cards-layout__content > div:first-child h3"
+          ]
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "projectType": "da"
+  }
+}

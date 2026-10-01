@@ -1,0 +1,37 @@
+/* Booz Allen brand tokens - extracted from https://www.boozallen.com/ */
+:root {
+  --heading-font-family: inter, calibri, geneva, sans-serif;
+  --body-font-family: inter, calibri, geneva, sans-serif;
+  --background-color: #fff;
+  --text-color: #4c4c4c;
+  --heading-color: #000;
+  --link-color: #23d2d7;
+  --link-hover-color: #1eb5b9;
+  --dark-color: #000;
+  --light-color: #f8f8f8;
+  --section-padding: 24px;
+  --content-max-width: 1440px;
+  --nav-height: 64px;
+
+  /* heading sizes (mobile) */
+  --heading-size-xxl: 36px;
+  --heading-size-xl: 34px;
+  --heading-size-l: 32px;
+  --heading-size-m: 24px;
+  --heading-size-s: 22px;
+  --heading-size-xs: 18px;
+}
+
+@media (width >= 900px) {
+  :root {
+    --section-padding: 96px;
+
+    /* heading sizes (desktop) */
+    --heading-size-xxl: 60px;
+    --heading-size-xl: 60px;
+    --heading-size-l: 44px;
+    --heading-size-m: 28px;
+    --heading-size-s: 24px;
+    --heading-size-xs: 20px;
+  }
+}
