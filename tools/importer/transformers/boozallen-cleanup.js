@@ -16,6 +16,12 @@ export default function transform(hookName, element, payload) {
       'iframe#destination_publishing_iframe_bah_0',
       // <a href="#content" class="visually-hidden focusable skip-link">
       'a.skip-link',
+      // Empty placeholder background videos (404 sources), incl. inside every expertise
+      // card_carousel card: <div class="background-video"><video><source src="/download">
+      // Sorry, your browser doesn't support embedded videos.</video></div>
+      // Removed before parsing so the fallback text never leaks into block cells.
+      // Real (Scene7) videos, e.g. the homepage hero, are untouched.
+      '.background-video:has(source[src="/download"])',
     ]);
     // Third-party tracking pixels (cdn.bizible.com, ib.adnxs.com, pixel.mathtag.com,
     // insight.adsrvr.org, ...) vary per page load; all authored images live on boozallen.com
@@ -30,13 +36,14 @@ export default function transform(hookName, element, payload) {
   }
 
   if (hookName === TransformHook.afterTransform) {
-    // Source CTAs (<a class="button button--secondary-on-light|dark">) -> bold links,
-    // which EDS decorateButtons turns into primary buttons
+    // Source CTAs -> authored emphasis, which EDS decorateButtons turns into buttons:
+    // teal <a class="button default-style"> -> italic (secondary button),
+    // black/white <a class="button button--secondary-on-light|dark"> -> bold (primary button)
     element.querySelectorAll('a.button').forEach((a) => {
-      if (a.closest('strong')) return;
-      const strong = element.ownerDocument.createElement('strong');
-      a.replaceWith(strong);
-      strong.append(a);
+      if (a.closest('strong, em')) return;
+      const wrapper = element.ownerDocument.createElement(a.classList.contains('default-style') ? 'em' : 'strong');
+      a.replaceWith(wrapper);
+      wrapper.append(a);
     });
 
     WebImporter.DOMUtils.remove(element, [
@@ -49,10 +56,12 @@ export default function transform(hookName, element, payload) {
       'div.link-to-top',
       // <h1 class="visuallyhidden">Booz Allen Hamilton</h1> - screen-reader-only site title, not page content
       'h1.visuallyhidden',
-      // Empty placeholder background videos: <video><source src="/download">Sorry, your browser...</video>
-      '.background-video:has(source[src="/download"])',
+      // <h1 class="visuallyhidden">Artificial Intelligence Solutions</h1> on expertise pages
+      // is the same element (SEO duplicate of the hero H1) - covered by 'h1.visuallyhidden' above.
       // Decorative section background patterns (home-pattern-*.png) - conveyed by section style
-      // (pattern-waves / pattern-rings); runs after parsers, so block media is unaffected
+      // (pattern-waves / pattern-rings). Runs after parsers: on expertise pages the
+      // columns-backdrop parser matches '.grid-layout__wrapper > .grid-layout', which contains
+      // its .grid-layout__background image, so that image is already in the block by now.
       '.grid-layout__background',
       // Remaining non-authorable embeds/tracking
       'iframe',

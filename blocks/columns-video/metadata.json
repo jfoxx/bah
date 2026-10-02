@@ -1,0 +1,20 @@
+{
+  "variantName": "columns-video",
+  "baseBlock": "columns",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "spacious",
+    "purpose": "video-intro",
+    "imagePattern": "embed-video",
+    "structure": "heading + paragraph + logo image | video embed + transcript toggle"
+  },
+  "contentPattern": "heading + paragraph + logo image | video embed + transcript toggle",
+  "usage": {
+    "pagesUsing": ["https://www.boozallen.com/expertise/artificial-intelligence.html"],
+    "reuseCount": 1,
+    "lastUsed": "2026-10-02"
+  },
+  "options": [],
+  "memberVariantIds": ["columns-video"]
+}

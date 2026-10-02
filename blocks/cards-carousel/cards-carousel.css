@@ -1,0 +1,272 @@
+/*
+ * Cards Carousel
+ * Values extracted from boozallen.com .card_carousel (card_generic slides, swiper pagination).
+ * Light sections: dark dots with teal active dot, black card shadow.
+ * Dark / dark-gray sections: white dots, white card shadow.
+ */
+.cards-carousel {
+  --cards-carousel-gap: 40px;
+  --cards-carousel-per-view: 1;
+  --cards-carousel-card-height: 340px;
+  --cards-carousel-image-card-height: 643px;
+  --cards-carousel-shadow: 0 4px 24px 0 rgb(0 0 0 / 25%);
+  --cards-carousel-dot: #000;
+  --cards-carousel-dot-active: var(--teal-button-hover-color);
+  --cards-carousel-dot-gap: 7.2px;
+  --cards-carousel-dots-offset: 25px;
+  --cards-carousel-cta-hover: var(--teal-button-hover-color);
+
+  position: relative;
+  max-width: 1160px;
+  margin: 0 calc(10px - var(--section-padding)) 50px;
+  font-size: 20px;
+  line-height: 30px;
+  letter-spacing: normal;
+}
+
+main .section.dark .cards-carousel,
+main .section.dark-gray .cards-carousel {
+  --cards-carousel-shadow: 0 4px 24px 0 rgb(255 255 255 / 25%);
+  --cards-carousel-dot: #fff;
+  --cards-carousel-dot-active: #fff;
+  --cards-carousel-dot-gap: 22px;
+  --cards-carousel-dots-offset: -20px;
+
+  margin-bottom: 0;
+}
+
+/* track: padding leaves room for the card shadow and the hover zoom */
+.cards-carousel .cards-carousel-track {
+  display: flex;
+  gap: var(--cards-carousel-gap);
+  margin: 0;
+  padding: 36px 36px 18px;
+  list-style: none;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: 36px;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+}
+
+.cards-carousel .cards-carousel-track::-webkit-scrollbar {
+  display: none;
+}
+
+/* card */
+.cards-carousel .cards-carousel-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 calc((100% - (var(--cards-carousel-per-view) - 1) * var(--cards-carousel-gap)) / var(--cards-carousel-per-view));
+  box-sizing: border-box;
+  height: var(--cards-carousel-card-height);
+  margin-bottom: 24px;
+  overflow: hidden;
+  background-color: #000;
+  color: #fff;
+  box-shadow: var(--cards-carousel-shadow);
+  scroll-snap-align: start;
+  transition: transform 0.2s;
+}
+
+/* text-only cards rotate black / white / medium gray */
+.cards-carousel .cards-carousel-card:nth-child(3n + 2) {
+  background-color: #fff;
+  color: #000;
+}
+
+.cards-carousel .cards-carousel-card:nth-child(3n) {
+  background-color: #4c4c4c;
+}
+
+/* image cards: white, image and text split the card height evenly */
+.cards-carousel .cards-carousel-card.cards-carousel-card-has-image {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  height: var(--cards-carousel-image-card-height);
+  background-color: #fff;
+  color: #000;
+}
+
+.cards-carousel .cards-carousel-card-image {
+  position: relative;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.cards-carousel .cards-carousel-card-image p {
+  margin: 0;
+}
+
+.cards-carousel .cards-carousel-card-image img {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cards-carousel .cards-carousel-card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 0;
+  flex: 1 1 auto;
+  box-sizing: border-box;
+  padding: 4px 20px 0;
+}
+
+/* copy keeps its full height; overflow is clipped at the card edge (CTA padding first) */
+.cards-carousel .cards-carousel-card-text {
+  flex-shrink: 0;
+  margin-top: 22px;
+}
+
+.cards-carousel .cards-carousel-card-text > * {
+  margin: 0;
+  font-size: 18px;
+  line-height: 27px;
+}
+
+.cards-carousel .cards-carousel-card-text > * + * {
+  margin-top: 6px;
+}
+
+.cards-carousel .cards-carousel-card-text > .cards-carousel-card-title {
+  margin-bottom: 7px;
+  color: inherit;
+  font-family: var(--heading-font-family);
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: normal;
+}
+
+.cards-carousel .cards-carousel-card-title strong,
+.cards-carousel .cards-carousel-card-title b {
+  font-weight: inherit;
+}
+
+/* CTA: bold link with arrow, sits at the bottom of the card */
+.cards-carousel .cards-carousel-cta-wrapper {
+  flex-shrink: 0;
+  margin: 0;
+  padding-bottom: 30px;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+}
+
+.cards-carousel .cards-carousel-cta:any-link {
+  display: inline-flex;
+  align-items: center;
+  color: inherit;
+  text-decoration: none;
+}
+
+.cards-carousel .cards-carousel-cta::after {
+  content: '';
+  flex-shrink: 0;
+  width: 20px;
+  height: 16px;
+  margin-left: 7px;
+  background-color: currentcolor;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 26 16'%3E%3Cpath d='M25.707 8.707a1 1 0 0 0 0-1.414L19.343.929a1 1 0 1 0-1.414 1.414L23.586 8l-5.657 5.657a1 1 0 0 0 1.414 1.414l6.364-6.364ZM0 9h25V7H0v2Z'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+.cards-carousel .cards-carousel-cta:focus-visible {
+  color: var(--cards-carousel-cta-hover);
+  text-decoration: underline;
+}
+
+/* whole card is clickable via the CTA */
+.cards-carousel .cards-carousel-card-linked .cards-carousel-cta::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+/* dot pagination */
+.cards-carousel .cards-carousel-dots ol {
+  position: relative;
+  top: var(--cards-carousel-dots-offset);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--cards-carousel-dot-gap);
+  height: 30px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cards-carousel .cards-carousel-dots button {
+  display: block;
+  box-sizing: border-box;
+  width: 16px;
+  height: 16px;
+  margin: 0;
+  padding: 0;
+  border: 1px solid var(--cards-carousel-dot);
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+}
+
+.cards-carousel .cards-carousel-dots button[aria-current="true"] {
+  border-color: var(--cards-carousel-dot-active);
+  background: var(--cards-carousel-dot-active);
+}
+
+.cards-carousel.cards-carousel-static .cards-carousel-dots {
+  display: none;
+}
+
+@media (width >= 640px) {
+  .cards-carousel {
+    --cards-carousel-card-height: 375px;
+    --cards-carousel-image-card-height: 675px;
+  }
+
+  .cards-carousel .cards-carousel-card {
+    margin-bottom: 18px;
+  }
+
+  .cards-carousel .cards-carousel-card-text > .cards-carousel-card-title {
+    font-size: 24px;
+  }
+
+  .cards-carousel .cards-carousel-card-linked:hover {
+    transform: scale(1.1);
+  }
+
+  .cards-carousel .cards-carousel-card-linked:hover .cards-carousel-cta {
+    color: var(--cards-carousel-cta-hover);
+    text-decoration: underline;
+  }
+}
+
+@media (width >= 768px) {
+  .cards-carousel {
+    --cards-carousel-per-view: 2;
+    --cards-carousel-dots-offset: 35px;
+
+    margin: 0 auto 100px;
+  }
+
+  main .section.dark .cards-carousel,
+  main .section.dark-gray .cards-carousel {
+    --cards-carousel-dots-offset: -20px;
+
+    margin-bottom: 0;
+  }
+}
+
+@media (width >= 1024px) {
+  .cards-carousel {
+    --cards-carousel-per-view: 3;
+  }
+}

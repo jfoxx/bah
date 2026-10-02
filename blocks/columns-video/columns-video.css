@@ -1,0 +1,204 @@
+/* Columns Video - text column (heading, intro, logo) beside a video embed with a transcript toggle */
+.columns-video {
+  color: var(--dark-color);
+}
+
+.columns-video .columns-video-row {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.columns-video .columns-video-row + .columns-video-row {
+  margin-top: 48px;
+}
+
+.columns-video .columns-video-row > div {
+  min-width: 0;
+}
+
+.columns-video .columns-video-row > div > :first-child {
+  margin-top: 0;
+}
+
+.columns-video .columns-video-row > div > :last-child {
+  margin-bottom: 0;
+}
+
+/* text column */
+.columns-video .columns-video-text h2 {
+  margin: 0 0 28px;
+  color: var(--dark-color);
+  font-size: var(--heading-font-size-l);
+  font-weight: 300;
+  line-height: 1.2;
+  letter-spacing: -1px;
+  text-align: center;
+}
+
+.columns-video p {
+  margin: 0 0 18px;
+  color: var(--dark-color);
+  font-size: var(--body-font-size-m);
+  line-height: 1.6;
+  letter-spacing: -0.5px;
+}
+
+/* transcript paragraphs sit flush */
+.columns-video .columns-video-transcript-body p {
+  margin: 0;
+}
+
+/* logo paragraph is centered, image keeps its natural size */
+.columns-video .columns-video-text p:has(> picture:only-child) {
+  text-align: center;
+}
+
+.columns-video .columns-video-text picture img {
+  display: inline-block;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+}
+
+/* video embed */
+.columns-video .columns-video-embed {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+}
+
+.columns-video .columns-video-embed iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* transcript */
+.columns-video .columns-video-transcript {
+  margin-top: 32px;
+  padding: 32px 0 2px;
+  border-top: 1px solid #d9d9d9;
+}
+
+.columns-video .columns-video-transcript summary {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  padding-bottom: 28px;
+  cursor: pointer;
+  list-style: none;
+}
+
+.columns-video .columns-video-transcript summary::-webkit-details-marker {
+  display: none;
+}
+
+.columns-video .columns-video-transcript-title {
+  flex: 0 1 80%;
+  padding-top: 2px;
+  color: var(--dark-color);
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 30px;
+  letter-spacing: normal;
+}
+
+.columns-video .columns-video-transcript-title > * {
+  margin: 0;
+}
+
+.columns-video .columns-video-transcript-toggle {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 4px;
+  height: 77px;
+  color: #00a5b5;
+  font-size: 14px;
+  letter-spacing: normal;
+}
+
+/* label is icon-only on mobile, as on the source */
+.columns-video .columns-video-transcript-expand,
+.columns-video .columns-video-transcript-collapse {
+  display: none;
+}
+
+/* circled plus / minus icon */
+.columns-video .columns-video-transcript-icon {
+  position: relative;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background-color: currentcolor;
+}
+
+.columns-video .columns-video-transcript-icon::before,
+.columns-video .columns-video-transcript-icon::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 50%;
+  height: 2px;
+  background-color: var(--background-color);
+  transform: translate(-50%, -50%);
+}
+
+.columns-video .columns-video-transcript-icon::after {
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.columns-video .columns-video-transcript[open] .columns-video-transcript-icon::after {
+  display: none;
+}
+
+.columns-video .columns-video-transcript-body {
+  margin-bottom: 3px;
+}
+
+@media (width >= 900px) {
+  .columns-video {
+    max-width: 1160px;
+    margin: 0 auto;
+  }
+
+  .columns-video .columns-video-row {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 40px;
+  }
+
+  .columns-video .columns-video-row > div {
+    flex: 1 1 0;
+  }
+
+  .columns-video .columns-video-transcript {
+    margin-top: 44px;
+  }
+
+  .columns-video .columns-video-transcript-toggle {
+    height: 54px;
+  }
+
+  .columns-video .columns-video-transcript:not([open]) .columns-video-transcript-expand,
+  .columns-video .columns-video-transcript[open] .columns-video-transcript-collapse {
+    display: inline;
+  }
+
+  .columns-video .columns-video-transcript-icon {
+    width: 12px;
+    height: 12px;
+  }
+
+  .columns-video .columns-video-transcript-icon::before,
+  .columns-video .columns-video-transcript-icon::after {
+    height: 2px;
+    width: 7px;
+  }
+}

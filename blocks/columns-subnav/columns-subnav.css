@@ -1,0 +1,353 @@
+/* Columns Subnav - black section sub-navigation bar (source: .horizontal-navigation) */
+
+/* a full-bleed bar, not a content section: drop the global section padding */
+main > .section.columns-subnav-container {
+  padding-top: 0;
+  padding-bottom: 0;
+  background-color: var(--dark-color);
+}
+
+main > .section.columns-subnav-container > .columns-subnav-wrapper {
+  padding: 0;
+}
+
+.columns-subnav {
+  color: #e6e6e6;
+  font-size: 18px;
+  line-height: 28.8px;
+  letter-spacing: normal;
+}
+
+.columns-subnav a:any-link,
+.columns-subnav a:hover {
+  color: inherit;
+  text-decoration: none;
+}
+
+.columns-subnav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* mobile menu button: "AI Menu" + three dots */
+.columns-subnav .columns-subnav-menu-toggle {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 48px;
+  margin: 0;
+  padding: 0 12px;
+  border: 0;
+  border-bottom: 2px solid #e6e6e6;
+  border-radius: 0;
+  background-color: var(--dark-color);
+  color: inherit;
+  font: inherit;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 18px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.columns-subnav .columns-subnav-menu-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 7px;
+}
+
+.columns-subnav .columns-subnav-menu-icon::before {
+  content: '';
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: currentcolor;
+  box-shadow: -11px 0 0 currentcolor, 11px 0 0 currentcolor;
+}
+
+.columns-subnav .columns-subnav-panel {
+  display: none;
+  background-color: var(--dark-gray-color);
+}
+
+.columns-subnav.columns-subnav-menu-open .columns-subnav-panel {
+  display: block;
+}
+
+.columns-subnav .columns-subnav-list {
+  display: flex;
+  flex-direction: column;
+}
+
+/* each item is a row: label | toggle, dropdown below */
+.columns-subnav .columns-subnav-item {
+  display: grid;
+  grid-template-columns: 1fr auto;
+}
+
+.columns-subnav .columns-subnav-item > a,
+.columns-subnav .columns-subnav-label {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  height: 50px;
+  padding: 0 12px;
+  border-bottom: 2px solid var(--dark-color);
+  font-weight: 400;
+}
+
+.columns-subnav .columns-subnav-item > a {
+  grid-column: 1 / -1;
+}
+
+.columns-subnav .columns-subnav-label {
+  cursor: default;
+}
+
+/* plus / minus toggle */
+.columns-subnav .columns-subnav-toggle {
+  box-sizing: border-box;
+  position: relative;
+  width: 67px;
+  height: 50px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-bottom: 2px solid var(--dark-color);
+  border-radius: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+
+.columns-subnav .columns-subnav-toggle::before,
+.columns-subnav .columns-subnav-toggle::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 27.5px;
+  width: 15px;
+  height: 2px;
+  background-color: currentcolor;
+  transform: translate(-50%, -50%);
+}
+
+.columns-subnav .columns-subnav-toggle::after {
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.columns-subnav .columns-subnav-toggle[aria-expanded="true"]::after {
+  display: none;
+}
+
+.columns-subnav .columns-subnav-open > .columns-subnav-label,
+.columns-subnav .columns-subnav-open > .columns-subnav-toggle {
+  background-color: var(--dark-color);
+  border-bottom-color: #e6e6e6;
+}
+
+.columns-subnav .columns-subnav-has-dropdown .columns-subnav-label:not(:has(a)) {
+  cursor: pointer;
+}
+
+.columns-subnav .columns-subnav-dropdown {
+  display: none;
+  grid-column: 1 / -1;
+  padding: 5px 0 0;
+  border-bottom: 2px solid var(--dark-color);
+}
+
+.columns-subnav .columns-subnav-open > .columns-subnav-dropdown {
+  display: block;
+}
+
+.columns-subnav .columns-subnav-dropdown li {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  height: 40px;
+  padding: 0 12px;
+}
+
+.columns-subnav .columns-subnav-dropdown a {
+  font-weight: 400;
+}
+
+/* call-to-action buttons */
+.columns-subnav .columns-subnav-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 27px 18px;
+}
+
+.columns-subnav .columns-subnav-actions p {
+  margin: 0;
+}
+
+.columns-subnav .columns-subnav-actions a.button:any-link {
+  width: 100%;
+  background-color: var(--link-color);
+  color: var(--dark-color);
+}
+
+.columns-subnav .columns-subnav-actions a.button:hover,
+.columns-subnav .columns-subnav-actions a.button:focus-visible {
+  background-color: rgb(32 189 194);
+  color: var(--dark-color);
+  text-decoration: none;
+}
+
+@media (width >= 900px) {
+  /* the bar pins below the fixed header once scrolled past, like the source page */
+  main > .section.columns-subnav-container {
+    position: sticky;
+    top: var(--nav-height, 64px);
+    z-index: 20;
+    border-bottom: 1px solid #999;
+  }
+
+  main > .section.columns-subnav-container > .columns-subnav-wrapper {
+    padding: 0 var(--section-padding);
+  }
+
+  .columns-subnav {
+    display: flex;
+    max-width: 1200px;
+    height: 80px;
+    margin: 0 auto;
+  }
+
+  .columns-subnav .columns-subnav-menu-toggle {
+    display: none;
+  }
+
+  .columns-subnav .columns-subnav-panel,
+  .columns-subnav.columns-subnav-menu-open .columns-subnav-panel {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: space-between;
+    background-color: transparent;
+  }
+
+  /* the source reserves 45px for a (hidden) scroll arrow before the links */
+  .columns-subnav .columns-subnav-nav {
+    align-self: stretch;
+    padding-left: 45px;
+  }
+
+  .columns-subnav .columns-subnav-list {
+    flex-flow: row nowrap;
+    height: 100%;
+  }
+
+  /* static so the dropdown strip positions against the full-width section */
+  .columns-subnav .columns-subnav-item {
+    position: static;
+    display: flex;
+    align-items: stretch;
+    font-weight: 600;
+  }
+
+  .columns-subnav .columns-subnav-has-dropdown {
+    padding: 0 12px;
+  }
+
+  .columns-subnav .columns-subnav-item:hover,
+  .columns-subnav .columns-subnav-open {
+    background-color: var(--dark-gray-color);
+  }
+
+  .columns-subnav .columns-subnav-item > a,
+  .columns-subnav .columns-subnav-label {
+    height: 100%;
+    border-bottom: 0;
+    font-weight: 600;
+  }
+
+  .columns-subnav .columns-subnav-label {
+    padding: 0;
+  }
+
+  /* chevron: down when closed, up when open */
+  .columns-subnav .columns-subnav-toggle {
+    width: 40px;
+    height: 100%;
+    border-bottom: 0;
+  }
+
+  .columns-subnav .columns-subnav-toggle::before {
+    display: none;
+  }
+
+  .columns-subnav .columns-subnav-open > .columns-subnav-label,
+  .columns-subnav .columns-subnav-open > .columns-subnav-toggle {
+    background-color: transparent;
+  }
+
+  .columns-subnav .columns-subnav-toggle::after,
+  .columns-subnav .columns-subnav-toggle[aria-expanded="true"]::after {
+    display: block;
+    left: 50%;
+    width: 7px;
+    height: 7px;
+    border-right: 2.5px solid currentcolor;
+    border-bottom: 2.5px solid currentcolor;
+    background-color: transparent;
+    transform: translate(-50%, -75%) rotate(45deg);
+  }
+
+  .columns-subnav .columns-subnav-toggle[aria-expanded="true"]::after {
+    transform: translate(-50%, -25%) rotate(-135deg);
+  }
+
+  /* dropdown: full-width dark gray strip under the bar, items aligned with the link list */
+  .columns-subnav .columns-subnav-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    flex-wrap: wrap;
+    padding: 5px 0 0 calc(max(var(--section-padding), (100% - 1200px) / 2) + 45px);
+    border-bottom: 0;
+    background-color: var(--dark-gray-color);
+    font-weight: 400;
+  }
+
+  .columns-subnav .columns-subnav-open > .columns-subnav-dropdown {
+    display: flex;
+  }
+
+  .columns-subnav .columns-subnav-dropdown li {
+    height: 60px;
+  }
+
+  .columns-subnav .columns-subnav-dropdown li:hover {
+    border-bottom: 4px solid #e6e6e6;
+    text-shadow: 0.2px 0.3px 0 currentcolor;
+  }
+
+  .columns-subnav .columns-subnav-dropdown a {
+    font-size: 16px;
+    line-height: 25.6px;
+    white-space: nowrap;
+  }
+
+  .columns-subnav .columns-subnav-actions {
+    flex-direction: row;
+    flex-shrink: 0;
+    align-items: center;
+    padding: 0 9px;
+  }
+
+  .columns-subnav .columns-subnav-actions a.button:any-link {
+    width: auto;
+  }
+}

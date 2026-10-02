@@ -1,0 +1,21 @@
+{
+  "status": "success",
+  "url": "https://www.boozallen.com/expertise/artificial-intelligence.html",
+  "path": "expertise/artificial-intelligence",
+  "timestamp": "2026-10-02T13:38:21.376Z",
+  "title": "Artificial Intelligence",
+  "template": "expertise",
+  "blocks": [
+    "hero-banner",
+    "columns-subnav",
+    "columns-video",
+    "cards-carousel",
+    "cards-carousel",
+    "columns-backdrop",
+    "columns-backdrop",
+    "columns-ruled",
+    "columns-ruled",
+    "columns-stats",
+    "columns-stats"
+  ]
+}

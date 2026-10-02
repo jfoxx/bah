@@ -24,6 +24,7 @@
   --heading-font-size-xxl: var(--heading-size-xxl);
   --heading-font-size-xl: var(--heading-size-xl);
   --heading-font-size-l: var(--heading-size-l);
+  --heading-font-size-h3: var(--heading-size-h3);
   --heading-font-size-m: var(--heading-size-m);
   --heading-font-size-s: var(--heading-size-s);
   --heading-font-size-xs: var(--heading-size-xs);
@@ -75,9 +76,10 @@ h6 {
 }
 
 h3 {
-  margin: 20px 0 10px;
-  font-size: var(--heading-font-size-l);
-  line-height: 1;
+  margin: 0 0 18px;
+  font-size: var(--heading-font-size-h3);
+  font-weight: 800;
+  line-height: 1.2;
   letter-spacing: normal;
 }
 
@@ -213,20 +215,20 @@ button.button.primary:disabled:focus-visible {
   color: var(--dark-color);
 }
 
+/* teal button (authored as italic link) */
 a.button.secondary,
 button.button.secondary {
-  border-color: var(--text-color);
-  background-color: transparent;
-  color: var(--text-color);
+  background-color: var(--teal-button-color);
+  color: var(--background-color);
 }
 
 a.button.secondary:hover,
 a.button.secondary:focus-visible,
 button.button.secondary:hover,
 button.button.secondary:focus-visible {
-  border-color: var(--dark-color);
-  background-color: var(--light-color);
-  color: var(--dark-color);
+  background-color: var(--teal-button-hover-color);
+  color: var(--background-color);
+  text-decoration: none;
 }
 
 a.button.secondary[aria-disabled="true"],
@@ -342,6 +344,41 @@ main .section.dark .default-content-wrapper {
   text-align: center;
 }
 
+main .section.dark-gray {
+  background-color: var(--dark-gray-color);
+  color: #fff;
+}
+
+main .section.dark-gray h1,
+main .section.dark-gray h2,
+main .section.dark-gray h3,
+main .section.dark-gray h4,
+main .section.dark-gray h5,
+main .section.dark-gray h6 {
+  color: #fff;
+}
+
+/* eyebrow + heading groups above sliders are centered */
+main .section.dark-gray .default-content-wrapper,
+main .section.light .default-content-wrapper {
+  text-align: center;
+}
+
+main .section .default-content-wrapper h5 + h2 {
+  margin-top: -11px;
+  margin-bottom: 28px;
+}
+
+/* a button on its own below a block is centered */
+main .default-content-wrapper:has(> .button-wrapper:only-child) {
+  text-align: center;
+}
+
+/* homepage mission statement: display-size heading on black */
+main .section.dark .default-content-wrapper h2 {
+  font-size: var(--heading-font-size-xxl);
+}
+
 
 /* decorative line patterns (home-pattern-*.png on the source) */
 main .section.pattern-waves,
@@ -349,6 +386,15 @@ main .section.pattern-rings {
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+}
+
+/* homepage section headings: large light-weight display style */
+main .section.pattern-waves h3,
+main .section.pattern-rings h3 {
+  margin: 20px 0 10px;
+  font-size: var(--heading-font-size-l);
+  font-weight: 300;
+  line-height: 1;
 }
 
 main .section.pattern-waves {

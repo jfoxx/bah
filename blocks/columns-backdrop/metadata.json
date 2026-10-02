@@ -1,0 +1,20 @@
+{
+  "variantName": "columns-backdrop",
+  "baseBlock": "columns",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "spacious",
+    "purpose": "image-backdrop-text",
+    "imagePattern": "fullbleed-background",
+    "structure": "background image | eyebrow + heading + paragraph (cell order sets text side: text | image or image | text)"
+  },
+  "contentPattern": "background image | eyebrow + heading + paragraph",
+  "usage": {
+    "pagesUsing": ["https://www.boozallen.com/expertise/artificial-intelligence.html"],
+    "reuseCount": 2,
+    "lastUsed": "2026-10-02"
+  },
+  "options": [],
+  "memberVariantIds": ["columns-backdrop"]
+}

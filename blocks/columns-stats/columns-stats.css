@@ -1,0 +1,82 @@
+/* Columns Stats - "by the numbers" grid: large value above a caption, ruled rows.
+ * Values measured from boozallen.com (.column_bah stat rows). */
+.columns-stats {
+  max-width: 1160px;
+  margin: 0 auto;
+  color: var(--dark-color);
+  letter-spacing: -0.5px;
+}
+
+.columns-stats .columns-stats-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  row-gap: 18px;
+  padding: 0 0 48px;
+}
+
+.columns-stats .columns-stats-row + .columns-stats-row {
+  border-top: 1px solid #d9d9d9;
+  padding-top: 50px;
+}
+
+/* source: 18px p margin + 30px spacer before the CTA; the global
+   p.button-wrapper already adds 12px top margin (48 - 12 = 36) */
+.columns-stats .columns-stats-row:last-child {
+  padding-bottom: 36px;
+}
+
+.columns-stats .columns-stats-item {
+  min-width: 0;
+}
+
+.columns-stats .columns-stats-empty {
+  display: none;
+}
+
+.columns-stats .columns-stats-value {
+  display: block;
+  margin: 0 0 18px;
+  color: var(--dark-color);
+  font-size: 60px;
+  font-weight: 800;
+  line-height: 55px;
+  letter-spacing: -0.5px;
+}
+
+.columns-stats .columns-stats-value strong,
+.columns-stats .columns-stats-value b {
+  font-weight: inherit;
+}
+
+.columns-stats .columns-stats-caption {
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 35.2px;
+}
+
+.columns-stats .columns-stats-caption p {
+  margin: 0 0 18px;
+  color: var(--dark-color);
+  font-size: inherit;
+  line-height: inherit;
+}
+
+.columns-stats .columns-stats-caption > :last-child {
+  margin-bottom: 0;
+}
+
+.columns-stats .columns-stats-caption strong,
+.columns-stats .columns-stats-caption b {
+  font-weight: 600;
+}
+
+@media (width >= 900px) {
+  .columns-stats .columns-stats-row {
+    grid-template-columns: repeat(var(--columns-stats-cols, 2), minmax(0, 1fr));
+    column-gap: 40px;
+  }
+
+  .columns-stats .columns-stats-empty {
+    display: block;
+  }
+}

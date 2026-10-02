@@ -1,0 +1,73 @@
+/* Columns Ruled - text grid with a thin rule after each row (values from boozallen.com) */
+.columns-ruled .columns-ruled-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  margin-bottom: 50px;
+  border-bottom: 1px solid #d9d9d9;
+}
+
+.columns-ruled .columns-ruled-item {
+  min-width: 0;
+  padding-bottom: 18px;
+  color: var(--dark-color);
+  font-size: var(--body-font-size-m);
+  line-height: 1.6;
+  letter-spacing: -0.5px;
+}
+
+.columns-ruled .columns-ruled-item > * {
+  margin: 0;
+}
+
+.columns-ruled .columns-ruled-item > * + * {
+  margin-top: 18px;
+}
+
+.columns-ruled .columns-ruled-empty {
+  display: none;
+}
+
+/* a bold lead-in title sits on its own line */
+.columns-ruled strong.columns-ruled-title,
+.columns-ruled b.columns-ruled-title {
+  display: block;
+  font-weight: 600;
+}
+
+.columns-ruled .columns-ruled-title + br {
+  display: none;
+}
+
+.columns-ruled h1.columns-ruled-title,
+.columns-ruled h2.columns-ruled-title,
+.columns-ruled h3.columns-ruled-title,
+.columns-ruled h4.columns-ruled-title,
+.columns-ruled h5.columns-ruled-title,
+.columns-ruled h6.columns-ruled-title {
+  margin: 0;
+  color: inherit;
+  font-size: inherit;
+  font-weight: 600;
+  line-height: inherit;
+  letter-spacing: inherit;
+}
+
+.columns-ruled h1.columns-ruled-title + *,
+.columns-ruled h2.columns-ruled-title + *,
+.columns-ruled h3.columns-ruled-title + *,
+.columns-ruled h4.columns-ruled-title + *,
+.columns-ruled h5.columns-ruled-title + *,
+.columns-ruled h6.columns-ruled-title + * {
+  margin-top: 0;
+}
+
+@media (width >= 1024px) {
+  .columns-ruled .columns-ruled-row {
+    grid-template-columns: repeat(var(--columns-ruled-cols, 2), minmax(0, 1fr));
+    column-gap: 40px;
+  }
+
+  .columns-ruled .columns-ruled-empty {
+    display: block;
+  }
+}
