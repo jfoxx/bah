@@ -92,7 +92,11 @@ function buildMenuSection(section, index) {
   panel.setAttribute('aria-label', label);
   const panelHeading = document.createElement('p');
   panelHeading.className = 'nav-panel-heading';
-  panelHeading.append(headingLink || document.createTextNode(label));
+  const back = document.createElement('button');
+  back.type = 'button';
+  back.className = 'nav-back';
+  back.setAttribute('aria-label', 'Back');
+  panelHeading.append(back, headingLink || document.createTextNode(label));
   const columns = document.createElement('div');
   columns.className = 'nav-panel-columns';
   section.querySelectorAll(':scope > ul').forEach((ul) => {
@@ -100,26 +104,42 @@ function buildMenuSection(section, index) {
     ul.querySelectorAll(':scope > li').forEach((li) => {
       li.classList.add('nav-group');
       const sub = li.querySelector(':scope > ul');
-      if (sub) sub.classList.add('nav-group-links');
-      // text-only group headings become labelled spans
+      const row = document.createElement('div');
+      row.className = 'nav-group-row';
       const textNodes = [...li.childNodes]
         .filter((n) => n.nodeType === Node.TEXT_NODE && n.textContent.trim());
-      if (textNodes.length) {
-        const span = document.createElement('span');
-        span.className = 'nav-group-heading';
-        span.textContent = textNodes.map((n) => n.textContent.trim()).join(' ');
-        textNodes.forEach((n) => n.remove());
-        li.prepend(span);
-      } else {
-        li.querySelector(':scope > a')?.classList.add('nav-group-heading');
+      const groupLabel = textNodes.map((n) => n.textContent.trim()).join(' ');
+      textNodes.forEach((n) => n.remove());
+      const link = li.querySelector(':scope > a');
+      let groupHeading = link;
+      if (!link) {
+        // text-only heading: the whole row drills into its links on mobile
+        groupHeading = document.createElement(sub ? 'button' : 'span');
+        if (sub) groupHeading.type = 'button';
+        groupHeading.textContent = groupLabel;
       }
+      groupHeading.classList.add('nav-group-heading');
+      row.append(groupHeading);
+      if (sub) {
+        sub.classList.add('nav-group-links');
+        li.classList.add('has-links');
+        const toggle = link ? document.createElement('button') : groupHeading;
+        if (link) {
+          toggle.type = 'button';
+          toggle.setAttribute('aria-label', `${link.textContent.trim()} links`);
+          row.append(toggle);
+        }
+        toggle.classList.add('nav-group-toggle');
+        toggle.setAttribute('aria-expanded', 'false');
+      }
+      li.prepend(row);
     });
     columns.append(ul);
   });
   panel.append(panelHeading, columns);
 
   return {
-    tab, tabButton, intro, panel,
+    tab, tabButton, intro, panel, back,
   };
 }
 
@@ -251,12 +271,12 @@ export default async function decorate(block) {
     stage.append(intro, panel);
   });
   sidebar.append(tabList);
+  menu.append(sidebar, stage);
   if (utilities) {
     const utilList = utilities.querySelector('ul');
     utilList.className = 'nav-utilities';
-    sidebar.append(utilList);
+    menu.append(utilList);
   }
-  menu.append(sidebar, stage);
 
   nav.append(bar, menu);
 
@@ -275,24 +295,47 @@ export default async function decorate(block) {
       intro.classList.toggle('is-visible', i === index);
     });
   };
+  // mobile drill-down into a group's links (one level below a section)
+  const drill = (panel, group) => {
+    panel.querySelectorAll('.nav-group.has-links').forEach((g) => {
+      const open = g === group;
+      g.classList.toggle('is-open', open);
+      g.querySelector('.nav-group-toggle').setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    panel.classList.toggle('is-drilled', !!group);
+  };
   const select = (index) => {
     built.forEach(({ tab, tabButton, panel }, i) => {
       const active = i === index;
       tab.classList.toggle('is-active', active);
       tabButton.setAttribute('aria-expanded', active ? 'true' : 'false');
       panel.classList.toggle('is-visible', active);
+      drill(panel, null);
     });
     menu.classList.toggle('has-panel', index >= 0);
     nav.classList.toggle('has-panel', index >= 0);
   };
-  built.forEach(({ tab, tabButton }, i) => {
+  built.forEach(({
+    tab, tabButton, panel, back,
+  }, i) => {
     tab.addEventListener('mouseenter', () => {
       if (!menu.classList.contains('has-panel')) setPreview(i);
     });
     tabButton.addEventListener('click', () => {
-      const isOpen = tabButton.getAttribute('aria-expanded') === 'true';
-      select(isOpen && !isDesktop.matches ? -1 : i);
+      select(i);
       setPreview(i);
+    });
+    back.addEventListener('click', () => {
+      select(-1);
+      tabButton.focus();
+    });
+    panel.querySelectorAll('.nav-group.has-links').forEach((group) => {
+      const toggle = group.querySelector('.nav-group-toggle');
+      toggle.addEventListener('click', () => {
+        if (isDesktop.matches) return;
+        drill(panel, group.classList.contains('is-open') ? null : group);
+        menu.scrollTop = 0;
+      });
     });
   });
 
