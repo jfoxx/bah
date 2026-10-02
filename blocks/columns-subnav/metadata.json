@@ -1,0 +1,20 @@
+{
+  "variantName": "columns-subnav",
+  "baseBlock": "columns",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "colorScheme": "dark",
+    "density": "compact",
+    "purpose": "section-subnav",
+    "imagePattern": "noimg",
+    "structure": "link list + dropdown sub-lists | 2 buttons"
+  },
+  "contentPattern": "link list + dropdown sub-lists | 2 buttons",
+  "usage": {
+    "pagesUsing": ["https://www.boozallen.com/expertise/artificial-intelligence.html"],
+    "reuseCount": 1,
+    "lastUsed": "2026-10-02"
+  },
+  "options": [],
+  "memberVariantIds": ["columns-subnav"]
+}

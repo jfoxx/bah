@@ -1,0 +1,20 @@
+{
+  "variantName": "columns-ruled",
+  "baseBlock": "columns",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "balanced",
+    "purpose": "text-grid",
+    "imagePattern": "noimg",
+    "structure": "bold title + paragraph"
+  },
+  "contentPattern": "bold title + paragraph",
+  "usage": {
+    "pagesUsing": ["https://www.boozallen.com/expertise/artificial-intelligence.html"],
+    "reuseCount": 1,
+    "lastUsed": "2026-10-02"
+  },
+  "options": [],
+  "memberVariantIds": ["columns-ruled"]
+}
