@@ -1,0 +1,20 @@
+{
+  "variantName": "hero-banner",
+  "baseBlock": "hero",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "colorScheme": "dark",
+    "density": "minimal",
+    "purpose": "page-hero",
+    "imagePattern": "fullbleed-image",
+    "structure": "background image + heading + paragraph + button"
+  },
+  "contentPattern": "background image + heading + paragraph + button",
+  "usage": {
+    "pagesUsing": ["https://www.boozallen.com/expertise/artificial-intelligence.html"],
+    "reuseCount": 1,
+    "lastUsed": "2026-10-02"
+  },
+  "options": [],
+  "memberVariantIds": ["hero-banner"]
+}

@@ -1,0 +1,124 @@
+/* Columns Backdrop - full-bleed background image with a half-width text panel */
+
+/* full-bleed section */
+main > .section.columns-backdrop-container {
+  padding: 0;
+}
+
+main > .section.columns-backdrop-container > .columns-backdrop-wrapper {
+  max-width: none;
+  padding: 0;
+}
+
+.columns-backdrop .columns-backdrop-row {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  color: var(--dark-color);
+}
+
+.columns-backdrop .columns-backdrop-media {
+  line-height: 0;
+}
+
+.columns-backdrop .columns-backdrop-media p {
+  margin: 0;
+}
+
+.columns-backdrop .columns-backdrop-media picture,
+.columns-backdrop .columns-backdrop-media img {
+  display: block;
+  width: 100%;
+}
+
+.columns-backdrop .columns-backdrop-media img {
+  height: auto;
+  object-fit: cover;
+  object-position: 50% 50%;
+}
+
+.columns-backdrop .columns-backdrop-inner {
+  position: relative;
+  z-index: 1;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 30px 20px 80px;
+}
+
+.columns-backdrop .columns-backdrop-text {
+  box-sizing: border-box;
+  padding: 0 10px;
+}
+
+.columns-backdrop .columns-backdrop-text > :first-child {
+  margin-top: 0;
+}
+
+.columns-backdrop .columns-backdrop-text h5 {
+  margin: 0 0 7px;
+  color: var(--heading-color);
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: normal;
+}
+
+.columns-backdrop .columns-backdrop-text h2 {
+  margin: 0 0 28px;
+  color: var(--heading-color);
+  font-size: 32px;
+  font-weight: 300;
+  line-height: 1.2;
+  letter-spacing: -1px;
+}
+
+.columns-backdrop .columns-backdrop-text p {
+  margin: 0 0 18px;
+  color: var(--dark-color);
+  font-size: 18px;
+  line-height: 1.6;
+  letter-spacing: -0.5px;
+}
+
+@media (width >= 900px) {
+  .columns-backdrop .columns-backdrop-row {
+    justify-content: center;
+  }
+
+  .columns-backdrop .columns-backdrop-media {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  .columns-backdrop .columns-backdrop-media picture,
+  .columns-backdrop .columns-backdrop-media img {
+    height: 100%;
+  }
+
+  .columns-backdrop .columns-backdrop-inner {
+    display: flex;
+    padding: 110px 0;
+  }
+
+  .columns-backdrop .columns-backdrop-text {
+    flex: 0 0 50%;
+    padding: 0 20px;
+  }
+
+  .columns-backdrop .columns-backdrop-text-end .columns-backdrop-inner {
+    justify-content: flex-end;
+  }
+
+  .columns-backdrop .columns-backdrop-text h5 {
+    font-size: 24px;
+  }
+
+  .columns-backdrop .columns-backdrop-text h2 {
+    padding-right: 60px;
+    font-size: 44px;
+  }
+}

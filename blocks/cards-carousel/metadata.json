@@ -1,0 +1,20 @@
+{
+  "variantName": "cards-carousel",
+  "baseBlock": "cards",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "colorScheme": "dark",
+    "density": "balanced",
+    "purpose": "card-slider",
+    "imagePattern": "noimg",
+    "structure": "title + description + arrow link (optional leading image cell: image + title + description + arrow link)"
+  },
+  "contentPattern": "title + description + arrow link; optionally image | title + description + arrow link",
+  "usage": {
+    "pagesUsing": ["https://www.boozallen.com/expertise/artificial-intelligence.html"],
+    "reuseCount": 2,
+    "lastUsed": "2026-10-02"
+  },
+  "options": [],
+  "memberVariantIds": ["cards-carousel"]
+}

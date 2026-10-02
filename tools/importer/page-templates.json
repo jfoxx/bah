@@ -6,7 +6,7 @@
         "https://www.boozallen.com/"
       ],
       "representativeUrl": "https://www.boozallen.com/",
-      "description": "Booz Allen homepage: video hero, mission statement, news feature + article cards, featured stories carousel, careers promo + explore cards",
+      "description": "To be named in naming step",
       "blocks": [
         {
           "name": "hero-video",
@@ -33,7 +33,6 @@
           ]
         }
       ],
-      "urlPattern": "/",
       "sections": [
         {
           "id": "rc1",
@@ -106,6 +105,191 @@
           ],
           "defaultContent": [
             ".content-cards-layout__content > div:first-child h3"
+          ]
+        }
+      ],
+      "urlPattern": "/"
+    },
+    {
+      "name": "expertise",
+      "urls": [
+        "https://www.boozallen.com/expertise/artificial-intelligence.html"
+      ],
+      "representativeUrl": "https://www.boozallen.com/expertise/artificial-intelligence.html",
+      "description": "Expertise/capability landing page (big hero + content sections)",
+      "blocks": [
+        {
+          "name": "hero-banner",
+          "instances": [
+            ".big-hero"
+          ]
+        },
+        {
+          "name": "columns-subnav",
+          "instances": [
+            ".horizontal-navigation"
+          ]
+        },
+        {
+          "name": "columns-video",
+          "instances": [
+            ".aem-Grid:has(> .big_hero) > :nth-child(3) .column_bah"
+          ]
+        },
+        {
+          "name": "cards-carousel",
+          "instances": [
+            ".card_carousel"
+          ]
+        },
+        {
+          "name": "columns-backdrop",
+          "instances": [
+            ".aem-Grid:has(> .big_hero) > .grid-layout__wrapper > .grid-layout"
+          ]
+        },
+        {
+          "name": "columns-ruled",
+          "instances": [
+            ".aem-Grid:has(> .big_hero) > :nth-child(6) .column_bah"
+          ]
+        },
+        {
+          "name": "columns-stats",
+          "instances": [
+            ".aem-Grid:has(> .big_hero) > :nth-child(9) .column_bah"
+          ]
+        }
+      ],
+      "urlPattern": "/expertise/*",
+      "sections": [
+        {
+          "id": "rc1",
+          "name": "Page hero",
+          "selector": [
+            ".aem-Grid:has(> .big_hero) > .big_hero",
+            "body > div:nth-of-type(2) .responsivegrid > .aem-Grid > :nth-child(1)"
+          ],
+          "style": null,
+          "blocks": [
+            "hero-banner"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "rc2",
+          "name": "AI section sub-navigation",
+          "selector": [
+            ".aem-Grid:has(> .big_hero) > .horizontal-navigation__wrapper",
+            "body > div:nth-of-type(2) .responsivegrid > .aem-Grid > :nth-child(2)"
+          ],
+          "style": null,
+          "blocks": [
+            "columns-subnav"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "rc3",
+          "name": "AI with Real Impact (intro + video)",
+          "selector": [
+            ".aem-Grid:has(> .big_hero) > :nth-child(3)",
+            "body > div:nth-of-type(2) .responsivegrid > .aem-Grid > :nth-child(3)"
+          ],
+          "style": null,
+          "blocks": [
+            "columns-video"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "rc4",
+          "name": "Featured Capabilities",
+          "selector": [
+            ".aem-Grid:has(> .big_hero) > :nth-child(4)",
+            "body > div:nth-of-type(2) .responsivegrid > .aem-Grid > :nth-child(4)"
+          ],
+          "style": "dark-gray",
+          "blocks": [
+            "cards-carousel"
+          ],
+          "defaultContent": [
+            ".aem-Grid:has(> .big_hero) > :nth-child(4) .column_bah h5",
+            ".aem-Grid:has(> .big_hero) > :nth-child(4) .column_bah h2"
+          ]
+        },
+        {
+          "id": "rc5",
+          "name": "End-to-End Services (image backdrop, text left)",
+          "selector": [
+            ".aem-Grid:has(> .big_hero) > :nth-child(5)",
+            "body > div:nth-of-type(2) .responsivegrid > .aem-Grid > :nth-child(5)"
+          ],
+          "style": null,
+          "blocks": [
+            "columns-backdrop"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "rc6",
+          "name": "Our Services Include",
+          "selector": [
+            ".aem-Grid:has(> .big_hero) > :nth-child(6)",
+            "body > div:nth-of-type(2) .responsivegrid > .aem-Grid > :nth-child(6)"
+          ],
+          "style": null,
+          "blocks": [
+            "columns-ruled"
+          ],
+          "defaultContent": [
+            ".aem-Grid:has(> .big_hero) > :nth-child(6) .title h3",
+            ".aem-Grid:has(> .big_hero) > :nth-child(6) .button_bah a"
+          ]
+        },
+        {
+          "id": "rc7",
+          "name": "Our Latest Thinking (insights slider)",
+          "selector": [
+            ".aem-Grid:has(> .big_hero) > :nth-child(7)",
+            "body > div:nth-of-type(2) .responsivegrid > .aem-Grid > :nth-child(7)"
+          ],
+          "style": "light",
+          "blocks": [
+            "cards-carousel"
+          ],
+          "defaultContent": [
+            ".aem-Grid:has(> .big_hero) > :nth-child(7) .title h5",
+            ".aem-Grid:has(> .big_hero) > :nth-child(7) .title h2",
+            ".aem-Grid:has(> .big_hero) > :nth-child(7) .button_bah a"
+          ]
+        },
+        {
+          "id": "rc8",
+          "name": "Real People, Making a Real Impact (image backdrop, text right)",
+          "selector": [
+            ".aem-Grid:has(> .big_hero) > :nth-child(8)",
+            "body > div:nth-of-type(2) .responsivegrid > .aem-Grid > :nth-child(8)"
+          ],
+          "style": null,
+          "blocks": [
+            "columns-backdrop"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "rc9",
+          "name": "AI by the numbers (stats)",
+          "selector": [
+            ".aem-Grid:has(> .big_hero) > :nth-child(9)",
+            "body > div:nth-of-type(2) .responsivegrid > .aem-Grid > :nth-child(9)"
+          ],
+          "style": null,
+          "blocks": [
+            "columns-stats"
+          ],
+          "defaultContent": [
+            ".aem-Grid:has(> .big_hero) > :nth-child(9) .button_bah a"
           ]
         }
       ]
