@@ -13,6 +13,7 @@ import {
   readBlockConfig,
   toClassName,
   toCamelCase,
+  getMetadata,
 } from './aem.js';
 
 if (window.trustedTypes && window.trustedTypes.createPolicy) {
@@ -171,6 +172,32 @@ function decorateSectionMetadata(main) {
 }
 
 /**
+ * Loads the CSS and JS for the page's template, if one is set.
+ * The `template` metadata value maps to `/templates/{name}/{name}.{css,js}`.
+ * A template's default export (if present) decorates `main` before sections load.
+ * CSS-only and JS-only templates are both valid.
+ * @param {Element} main The main element
+ */
+async function loadTemplate(main) {
+  const template = toClassName(getMetadata('template'));
+  if (!template) return;
+  document.body.classList.add(`${template}-template`);
+  const base = `${window.hlx.codeBasePath}/templates/${template}/${template}`;
+  await Promise.all([
+    loadCSS(`${base}.css`).catch(() => {}),
+    (async () => {
+      try {
+        const mod = await import(`${base}.js`);
+        if (mod.default) await mod.default(main);
+      } catch (error) {
+        // eslint-disable-next-line no-console
+        console.error(`Template loading failed: ${template}`, error);
+      }
+    })(),
+  ]);
+}
+
+/**
  * Decorates the main element.
  * @param {Element} main The main element
  */
@@ -194,6 +221,7 @@ async function loadEager(doc) {
   const main = doc.querySelector('main');
   if (main) {
     decorateMain(main);
+    await loadTemplate(main);
     document.body.classList.add('appear');
     await loadSection(main.querySelector('.section'), waitForFirstImage);
   }
