@@ -58,7 +58,7 @@ footer .footer-logo a:hover {
 
 footer .footer-logo img {
   display: block;
-  width: 100%;
+  max-width: 30%;
   height: auto;
 }
 
