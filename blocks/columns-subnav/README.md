@@ -19,7 +19,12 @@ Single block table, one row:
 
 ## Supported variations
 
-No variations.
+| Variation | Option class | Source |
+| --- | --- | --- |
+| Default | - | `.horizontal-navigation` (big-hero pages, e.g. /expertise/artificial-intelligence) |
+| In-page | `in-page` | `.in-page-horizontal-nav` (overview-hero pages, e.g. /markets/defense/ai-for-military) |
+
+In-page: no rule under the bar, white regular-weight links (20px side padding) that turn teal and bold on hover with no background change, a "More Content" mobile button, buttons spaced 25px apart and inset 44px from the right edge, and dropdown items with a white 4px underline on hover. Authors can set it explicitly with `Columns Subnav (in-page)`. If it isn't set, it is inferred when the section directly before the subnav holds a `Hero Banner (light)` (the overview hero), which is how the source pairs them.
 
 ## Universal Editor fields
 

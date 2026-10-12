@@ -1,0 +1,17 @@
+{
+  "status": "success",
+  "url": "https://www.boozallen.com/markets/defense/ai-for-military.html",
+  "path": "markets/defense/ai-for-military",
+  "timestamp": "2026-10-02T20:08:53.614Z",
+  "title": "AI for Defense",
+  "template": "defense",
+  "blocks": [
+    "hero-banner",
+    "columns-subnav",
+    "cards-carousel",
+    "cards-horizontal",
+    "columns-backdrop",
+    "embed-marketo",
+    "columns-cta"
+  ]
+}

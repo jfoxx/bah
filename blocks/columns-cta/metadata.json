@@ -1,0 +1,20 @@
+{
+  "variantName": "columns-cta",
+  "baseBlock": "columns",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "compact",
+    "purpose": "inline-cta",
+    "imagePattern": "noimg",
+    "structure": "paragraph | button"
+  },
+  "contentPattern": "paragraph | button",
+  "usage": {
+    "pagesUsing": ["https://www.boozallen.com/markets/defense/ai-for-military.html"],
+    "reuseCount": 1,
+    "lastUsed": "2026-10-02"
+  },
+  "options": [],
+  "memberVariantIds": ["columns-cta"]
+}

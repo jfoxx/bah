@@ -16,6 +16,12 @@
  * Iteration is keyed on the .card_generic slide wrapper, never on the <a> link
  * container (inline element wrapping block content - merge-prone in html2md).
  * The link href is read off the card's link container and re-attached to the CTA.
+ *
+ * Also: https://www.boozallen.com/markets/defense/ai-for-military.html
+ * Selector: ... generic_block:nth-of-type(1) .card_carousel - same .card_generic markup,
+ * 4 image cards ("Read More" / "Learn More") -> | image | title, description, CTA link |.
+ * The per-card "Sorry, your browser doesn't support embedded videos." fallback lives in
+ * .card-generic__background (never read here; removed by boozallen-cleanup).
  */
 function ownText(el) {
   if (!el) return '';

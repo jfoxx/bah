@@ -1,0 +1,116 @@
+/* Cards Horizontal - teaser card: thumbnail + linked title + tag.
+ * Values from boozallen.com .dynamic-content-item.card computed styles.
+ * Stacked below 640px (source breakpoint), image left / text right above. */
+
+.cards-horizontal > ul {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 38px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cards-horizontal .cards-horizontal-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background-color: #e6e6e6;
+  box-shadow: 5px -5px 15px 0 rgb(0 0 0 / 25%);
+}
+
+/* image */
+.cards-horizontal .cards-horizontal-image {
+  flex: 0 0 auto;
+  overflow: hidden;
+  background-color: var(--background-color);
+  line-height: 0;
+}
+
+.cards-horizontal .cards-horizontal-image p {
+  margin: 0;
+}
+
+.cards-horizontal .cards-horizontal-image a,
+.cards-horizontal .cards-horizontal-image picture {
+  display: block;
+  height: 100%;
+}
+
+.cards-horizontal .cards-horizontal-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+/* text */
+.cards-horizontal .cards-horizontal-body {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 12px;
+  box-sizing: border-box;
+  min-width: 0;
+  min-height: 200px;
+  padding: 12px 20px 11px;
+}
+
+.cards-horizontal .cards-horizontal-body > * {
+  margin: 0;
+}
+
+.cards-horizontal .cards-horizontal-title {
+  max-width: 330px;
+  color: var(--dark-gray-color);
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 27.6px;
+  letter-spacing: normal;
+}
+
+.cards-horizontal .cards-horizontal-title a:any-link,
+.cards-horizontal .cards-horizontal-title a:hover {
+  color: inherit;
+  text-decoration: none;
+}
+
+.cards-horizontal .cards-horizontal-tag {
+  color: var(--dark-color);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.cards-horizontal .cards-horizontal-tag a:any-link {
+  color: inherit;
+}
+
+@media (width >= 640px) {
+  .cards-horizontal .cards-horizontal-card {
+    flex-direction: row;
+  }
+
+  .cards-horizontal .cards-horizontal-image {
+    width: 260px;
+  }
+
+  .cards-horizontal .cards-horizontal-image img {
+    aspect-ratio: 260 / 147;
+  }
+
+  .cards-horizontal .cards-horizontal-body {
+    min-height: 0;
+    padding: 20px 16px 11px 20px;
+  }
+
+  .cards-horizontal .cards-horizontal-title {
+    padding-left: 1px;
+    font-size: 20px;
+    line-height: 23px;
+  }
+}

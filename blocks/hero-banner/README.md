@@ -10,7 +10,9 @@ Single block table. Content: one row, one cell of content.
 
 ## Supported variations
 
-No variations.
+| Variation | Option class |
+| --- | --- |
+| Light | `light` |
 
 ## Universal Editor fields
 

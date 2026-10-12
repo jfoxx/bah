@@ -35,6 +35,23 @@ main .section.dark-gray .cards-carousel {
   margin-bottom: 0;
 }
 
+/*
+ * Image cards in a black (.dark) section (boozallen.com/markets/defense/ai-for-military):
+ * cards keep the black / white / medium gray rotation, 1 / 2 / 4 per view,
+ * orange active dot with white outlined inactive dots.
+ * Light-section image cards and dark-gray text-only cards are unaffected.
+ */
+main .section.dark .cards-carousel.cards-carousel-has-images {
+  --cards-carousel-dot-active: #f70;
+  --cards-carousel-dot-gap: 7.2px;
+  --cards-carousel-dots-offset: 25px;
+
+  /* source: 79px heading-to-carousel gap (collapses with the heading margin);
+     black area ends 876px below the track top */
+  margin-top: 79px;
+  margin-bottom: 101px;
+}
+
 /* track: padding leaves room for the card shadow and the hover zoom */
 .cards-carousel .cards-carousel-track {
   display: flex;
@@ -87,6 +104,21 @@ main .section.dark-gray .cards-carousel {
   height: var(--cards-carousel-image-card-height);
   background-color: #fff;
   color: #000;
+}
+
+/* image cards in a black section keep the black / white / medium gray rotation */
+main .section.dark .cards-carousel-has-images .cards-carousel-card.cards-carousel-card-has-image {
+  background-color: #000;
+  color: #fff;
+}
+
+main .section.dark .cards-carousel-has-images .cards-carousel-card.cards-carousel-card-has-image:nth-child(3n + 2) {
+  background-color: #fff;
+  color: #000;
+}
+
+main .section.dark .cards-carousel-has-images .cards-carousel-card.cards-carousel-card-has-image:nth-child(3n) {
+  background-color: #4c4c4c;
 }
 
 .cards-carousel .cards-carousel-card-image {
@@ -247,6 +279,13 @@ main .section.dark-gray .cards-carousel {
     color: var(--cards-carousel-cta-hover);
     text-decoration: underline;
   }
+
+  main .section.dark .cards-carousel.cards-carousel-has-images {
+    --cards-carousel-per-view: 2;
+    --cards-carousel-dots-offset: 35px;
+
+    margin-bottom: 34px;
+  }
 }
 
 @media (width >= 768px) {
@@ -268,5 +307,15 @@ main .section.dark-gray .cards-carousel {
 @media (width >= 1024px) {
   .cards-carousel {
     --cards-carousel-per-view: 3;
+  }
+
+  main .section.dark .cards-carousel.cards-carousel-has-images {
+    --cards-carousel-per-view: 4;
+  }
+
+  /* source centers a full row with a trailing slide margin, shifting the cards 20px left */
+  main .section.dark .cards-carousel-has-images.cards-carousel-static .cards-carousel-track {
+    padding-right: 56px;
+    padding-left: 16px;
   }
 }

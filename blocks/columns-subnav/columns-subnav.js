@@ -10,9 +10,13 @@
  * Below 900px the bar collapses behind a menu button ("<Section> Menu" when the first item
  * is "<Section> Home", else "Menu"); dropdowns expand inline. From 900px dropdowns open on hover
  * as a full-width strip under the bar.
+ *
+ * Option `in-page` ("Columns Subnav (in-page)"): the source's in-page horizontal nav used on
+ * overview-hero pages (white regular-weight links that turn teal/bold on hover, "More Content"
+ * mobile button). Inferred when the previous section holds a light (overview) hero banner.
  */
 
-const OPTION_CLASSES = [];
+const OPTION_CLASSES = ['in-page'];
 
 let subnavId = 0;
 
@@ -86,7 +90,8 @@ function decorateList(block, ul) {
  * Mobile menu button text: the source labels it after the section ("AI Menu"), so derive it from
  * a first item named "<Section> Home"; otherwise fall back to a generic "Menu".
  */
-function menuLabel(nav) {
+function menuLabel(block, nav) {
+  if (block.classList.contains('in-page')) return 'More Content';
   const first = nav.querySelector('.columns-subnav-item');
   const text = first ? first.textContent.trim() : '';
   const match = text.match(/^(.+?)\s+home$/i);
@@ -114,6 +119,9 @@ function enableHover(block, desktop) {
 }
 
 export default function decorate(block) {
+  // overview-hero pages carry the in-page nav variant on the source
+  const prevSection = block.closest('.section')?.previousElementSibling;
+  if (prevSection?.querySelector('.hero-banner.light')) block.classList.add('in-page');
   const active = [...block.classList].filter((c) => OPTION_CLASSES.includes(c));
   block.dataset.options = active.join(' ');
   const desktop = window.matchMedia('(width >= 900px)');
@@ -153,7 +161,7 @@ export default function decorate(block) {
   menuToggle.setAttribute('aria-controls', panel.id);
   const menuText = document.createElement('span');
   menuText.className = 'columns-subnav-menu-label';
-  menuText.textContent = menuLabel(nav);
+  menuText.textContent = menuLabel(block, nav);
   const menuIcon = document.createElement('span');
   menuIcon.className = 'columns-subnav-menu-icon';
   menuIcon.setAttribute('aria-hidden', 'true');

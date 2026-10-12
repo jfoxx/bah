@@ -37,11 +37,18 @@ export default function transform(hookName, element, payload) {
 
   if (hookName === TransformHook.afterTransform) {
     // Source CTAs -> authored emphasis, which EDS decorateButtons turns into buttons:
-    // teal <a class="button default-style"> -> italic (secondary button),
-    // black/white <a class="button button--secondary-on-light|dark"> -> bold (primary button)
+    // teal <a class="button default-style"> and (defense pages) teal
+    // <a class="button button--primary-on-light"> e.g. 'Learn More' (rgb(0,132,145))
+    // -> italic (secondary button);
+    // black/white <a class="button button--secondary-on-light|dark|white"> -> bold (primary button).
+    // In-page sub-nav CTAs (<a class="in-page-horizontal-nav__cta ... button--primary-on-light">)
+    // are excluded from teal: they belong to the columns-subnav block.
     element.querySelectorAll('a.button').forEach((a) => {
       if (a.closest('strong, em')) return;
-      const wrapper = element.ownerDocument.createElement(a.classList.contains('default-style') ? 'em' : 'strong');
+      const teal = a.classList.contains('default-style')
+        || (a.classList.contains('button--primary-on-light')
+          && !a.classList.contains('in-page-horizontal-nav__cta'));
+      const wrapper = element.ownerDocument.createElement(teal ? 'em' : 'strong');
       a.replaceWith(wrapper);
       wrapper.append(a);
     });
@@ -63,6 +70,17 @@ export default function transform(hookName, element, payload) {
       // columns-backdrop parser matches '.grid-layout__wrapper > .grid-layout', which contains
       // its .grid-layout__background image, so that image is already in the block by now.
       '.grid-layout__background',
+      // Defense/market pages: desktop-only duplicate of the in-page nav submenus, sibling of
+      // the columns-subnav source (#in-page-horizontal-nav) inside .in_page_horizontal_navigation:
+      // <div class="in-page-submenu__container hide-for-small-only">
+      'div.in-page-submenu__container',
+      // Empty script-injected body-level helpers on defense pages:
+      // <div id="bah-subnav-sentinel_in-page-horizontal-nav">, <div id="mktoStyleLoaded">,
+      // and the empty Marketo XD form <form class="mktoForm ..."> directly under <body>
+      // (the real form lives inside .marketo_form, handled by the embed-marketo parser)
+      '[id^="bah-subnav-sentinel"]',
+      '#mktoStyleLoaded',
+      'body > form.mktoForm',
       // Remaining non-authorable embeds/tracking
       'iframe',
       'noscript',

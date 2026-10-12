@@ -1,0 +1,49 @@
+/* Columns CTA - body copy in a 3/4 column beside a top-aligned button in a 1/4 column */
+
+.columns-cta .columns-cta-row {
+  display: flex;
+  flex-direction: column;
+}
+
+.columns-cta .columns-cta-text p {
+  margin: 0 0 18px;
+  color: var(--dark-color);
+  font-size: 18px;
+  line-height: 28.8px;
+  letter-spacing: -0.5px;
+}
+
+.columns-cta .columns-cta-text > :first-child {
+  margin-top: 0;
+}
+
+.columns-cta .columns-cta-action {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.columns-cta .columns-cta-action p,
+.columns-cta .columns-cta-action p.button-wrapper {
+  margin: 0;
+}
+
+@media (width >= 900px) {
+  /* source grid: large-9 / large-3 columns with a 40px gutter */
+  .columns-cta .columns-cta-row {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 40px;
+  }
+
+  .columns-cta .columns-cta-text {
+    flex: 0 0 calc(75% - 10px);
+    min-width: 0;
+  }
+
+  .columns-cta .columns-cta-action {
+    flex: 0 0 calc(25% - 30px);
+    min-width: 0;
+  }
+}

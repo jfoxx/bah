@@ -293,6 +293,196 @@
           ]
         }
       ]
+    },
+    {
+      "name": "defense",
+      "urls": [
+        "https://www.boozallen.com/markets/defense/ai-for-military.html"
+      ],
+      "representativeUrl": "https://www.boozallen.com/markets/defense/ai-for-military.html",
+      "description": "Defense market/solution page (overview hero + in-page nav + content blocks)",
+      "blocks": [
+        {
+          "name": "hero-banner",
+          "instances": [
+            "#content > div.overview-hero-wrapper.full"
+          ]
+        },
+        {
+          "name": "columns-subnav",
+          "instances": [
+            ".in-page-horizontal-nav"
+          ]
+        },
+        {
+          "name": "cards-carousel",
+          "instances": [
+            "body > div.overview-page-content.wide-parsys > div.generic_block.responsivegrid:nth-of-type(1) .card_carousel"
+          ]
+        },
+        {
+          "name": "cards-horizontal",
+          "instances": [
+            "body > div.overview-page-content.wide-parsys > div.generic_block.responsivegrid:nth-of-type(2) .dynamic-content-super-wrapper"
+          ]
+        },
+        {
+          "name": "columns-backdrop",
+          "instances": [
+            "body > div.overview-page-content.wide-parsys > div.generic_block.responsivegrid:nth-of-type(4) > div"
+          ]
+        },
+        {
+          "name": "embed-marketo",
+          "instances": [
+            "body > div.overview-page-content.wide-parsys > div.generic_block.responsivegrid:nth-of-type(6) .marketo_form"
+          ]
+        },
+        {
+          "name": "columns-cta",
+          "instances": [
+            "body > div.overview-page-content.wide-parsys > div.generic_block.responsivegrid:nth-of-type(7) .column_bah"
+          ]
+        }
+      ],
+      "urlPattern": "/markets/defense/*",
+      "sections": [
+        {
+          "id": "rc1",
+          "name": "Overview hero",
+          "selector": [
+            "#content > div.overview-hero-wrapper.full"
+          ],
+          "style": null,
+          "blocks": [
+            "hero-banner"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "rc2",
+          "name": "In-page sub-navigation",
+          "selector": [
+            "#in-page-horizontal-nav",
+            ".in_page_horizontal_navigation"
+          ],
+          "style": null,
+          "blocks": [
+            "columns-subnav"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "rc3",
+          "name": "Intro",
+          "selector": [
+            "body > div.sticky-sidebar-container"
+          ],
+          "style": null,
+          "blocks": [],
+          "defaultContent": [
+            "body > div.sticky-sidebar-container h2",
+            "body > div.sticky-sidebar-container .cmp-text p"
+          ]
+        },
+        {
+          "id": "rc4",
+          "name": "Propel Your Defense AI Mission (card slider)",
+          "selector": [
+            "body > div.overview-page-content.wide-parsys > div.generic_block.responsivegrid:nth-of-type(1)"
+          ],
+          "style": "dark",
+          "blocks": [
+            "cards-carousel"
+          ],
+          "defaultContent": [
+            "body > div.overview-page-content.wide-parsys > div.generic_block.responsivegrid:nth-of-type(1) .title h2"
+          ]
+        },
+        {
+          "id": "rc5",
+          "name": "Case study teaser",
+          "selector": [
+            "body > div.overview-page-content.wide-parsys > div.generic_block.responsivegrid:nth-of-type(2)"
+          ],
+          "style": null,
+          "blocks": [
+            "cards-horizontal"
+          ],
+          "defaultContent": [
+            "body > div.overview-page-content.wide-parsys > div.generic_block.responsivegrid:nth-of-type(2) h4"
+          ]
+        },
+        {
+          "id": "rc6",
+          "name": "How does the military use AI",
+          "selector": [
+            "body > div.overview-page-content.wide-parsys > div.generic_block.responsivegrid:nth-of-type(3)"
+          ],
+          "style": "light",
+          "blocks": [],
+          "defaultContent": [
+            "body > div.overview-page-content.wide-parsys > div.generic_block.responsivegrid:nth-of-type(3) h2",
+            "body > div.overview-page-content.wide-parsys > div.generic_block.responsivegrid:nth-of-type(3) .cmp-text p",
+            "body > div.overview-page-content.wide-parsys > div.generic_block.responsivegrid:nth-of-type(3) .cmp-text ul"
+          ]
+        },
+        {
+          "id": "rc7",
+          "name": "Tactical Edge AI for JADC2 (dark photo band)",
+          "selector": [
+            "body > div.overview-page-content.wide-parsys > div.generic_block.responsivegrid:nth-of-type(4)"
+          ],
+          "style": null,
+          "blocks": [
+            "columns-backdrop"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "rc8",
+          "name": "AI with Agency",
+          "selector": [
+            "body > div.overview-page-content.wide-parsys > div.grid-layout__wrapper"
+          ],
+          "style": null,
+          "blocks": [],
+          "defaultContent": [
+            "body > div.overview-page-content.wide-parsys > div.grid-layout__wrapper h4",
+            "body > div.overview-page-content.wide-parsys > div.grid-layout__wrapper .cmp-text p",
+            "body > div.overview-page-content.wide-parsys > div.grid-layout__wrapper .button_bah a"
+          ]
+        },
+        {
+          "id": "rc9",
+          "name": "Want More Information? (Marketo form)",
+          "selector": [
+            "body > div.overview-page-content.wide-parsys > div.generic_block.responsivegrid:nth-of-type(6)"
+          ],
+          "style": "dark",
+          "blocks": [
+            "embed-marketo"
+          ],
+          "defaultContent": [
+            "body > div.overview-page-content.wide-parsys > div.generic_block.responsivegrid:nth-of-type(6) .marketo-form__content .title h3",
+            "body > div.overview-page-content.wide-parsys > div.generic_block.responsivegrid:nth-of-type(6) .marketo-form__content > .aem-Grid > .text .cmp-text p"
+          ]
+        },
+        {
+          "id": "rc10",
+          "name": "Join Booz Allen",
+          "selector": [
+            "body > div.overview-page-content.wide-parsys > div.generic_block.responsivegrid:nth-of-type(7)"
+          ],
+          "style": null,
+          "blocks": [
+            "columns-cta"
+          ],
+          "defaultContent": [
+            "body > div.overview-page-content.wide-parsys > div.generic_block.responsivegrid:nth-of-type(7) .title h2"
+          ]
+        }
+      ]
     }
   ],
   "metadata": {

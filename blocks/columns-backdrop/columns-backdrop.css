@@ -122,3 +122,63 @@ main > .section.columns-backdrop-container > .columns-backdrop-wrapper {
     font-size: 44px;
   }
 }
+
+/* ---- option: dark (dark photo band, white text + white button) ---- */
+.columns-backdrop.dark .columns-backdrop-row {
+  background-color: var(--dark-color);
+  color: #fff;
+}
+
+.columns-backdrop.dark .columns-backdrop-text h1,
+.columns-backdrop.dark .columns-backdrop-text h2,
+.columns-backdrop.dark .columns-backdrop-text h3,
+.columns-backdrop.dark .columns-backdrop-text h4,
+.columns-backdrop.dark .columns-backdrop-text h5,
+.columns-backdrop.dark .columns-backdrop-text h6,
+.columns-backdrop.dark .columns-backdrop-text p {
+  color: #fff;
+}
+
+/* mobile: plain black band, no photo */
+.columns-backdrop.dark .columns-backdrop-media {
+  display: none;
+}
+
+.columns-backdrop.dark .columns-backdrop-inner {
+  padding: 50px 0 30px;
+}
+
+.columns-backdrop.dark .columns-backdrop-text {
+  padding: 0 10px;
+}
+
+.columns-backdrop.dark .columns-backdrop-text h3 {
+  margin: 0 0 18px;
+}
+
+.columns-backdrop.dark .columns-backdrop-text p.button-wrapper {
+  display: flex;
+  margin: 0 0 30px;
+}
+
+@media (width >= 900px) {
+  .columns-backdrop.dark .columns-backdrop-media {
+    display: block;
+  }
+
+  .columns-backdrop.dark .columns-backdrop-text {
+    padding: 0 20px;
+  }
+}
+
+main .columns-backdrop.dark a.button:any-link {
+  background-color: var(--background-color);
+  color: var(--dark-color);
+}
+
+main .columns-backdrop.dark a.button:hover,
+main .columns-backdrop.dark a.button:focus-visible {
+  background-color: #d9d9d9;
+  color: var(--dark-color);
+  text-decoration: none;
+}

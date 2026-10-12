@@ -11,10 +11,15 @@
   },
   "contentPattern": "title + description + arrow link; optionally image | title + description + arrow link",
   "usage": {
-    "pagesUsing": ["https://www.boozallen.com/expertise/artificial-intelligence.html"],
-    "reuseCount": 2,
+    "pagesUsing": [
+      "https://www.boozallen.com/expertise/artificial-intelligence.html",
+      "https://www.boozallen.com/markets/defense/ai-for-military.html"
+    ],
+    "reuseCount": 3,
     "lastUsed": "2026-10-02"
   },
   "options": [],
-  "memberVariantIds": ["cards-carousel"]
+  "memberVariantIds": [
+    "cards-carousel"
+  ]
 }

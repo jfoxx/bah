@@ -203,6 +203,39 @@ main > .section.columns-subnav-container > .columns-subnav-wrapper {
   text-decoration: none;
 }
 
+/* in-page option (source: .in-page-horizontal-nav on overview-hero pages) */
+.columns-subnav.in-page {
+  color: #fff;
+}
+
+.columns-subnav.in-page .columns-subnav-menu-toggle {
+  padding: 0 20px 0 12px;
+  border-bottom: 0;
+}
+
+.columns-subnav.in-page .columns-subnav-toggle {
+  width: 65px;
+}
+
+.columns-subnav.in-page .columns-subnav-actions {
+  padding: 16px 28px;
+}
+
+.columns-subnav.in-page .columns-subnav-actions a.button:any-link {
+  padding: 10px 40px 10px 16px;
+  border: 1px solid transparent;
+  color: #fff;
+  font-size: 15.84px;
+  font-weight: 400;
+  line-height: 15.84px;
+}
+
+.columns-subnav.in-page .columns-subnav-actions a.button:hover,
+.columns-subnav.in-page .columns-subnav-actions a.button:focus-visible {
+  background-color: var(--link-color);
+  color: #fff;
+}
+
 @media (width >= 900px) {
   /* the bar pins below the fixed header once scrolled past, like the source page */
   main > .section.columns-subnav-container {
@@ -349,5 +382,78 @@ main > .section.columns-subnav-container > .columns-subnav-wrapper {
 
   .columns-subnav .columns-subnav-actions a.button:any-link {
     width: auto;
+  }
+
+  /* in-page option: no rule under the bar, white regular links that turn teal/bold on hover */
+  main > .section.columns-subnav-container:has(.columns-subnav.in-page) {
+    border-bottom: 0;
+  }
+
+  .columns-subnav.in-page .columns-subnav-nav {
+    padding-left: 48px;
+  }
+
+  .columns-subnav.in-page .columns-subnav-item,
+  .columns-subnav.in-page .columns-subnav-item > a,
+  .columns-subnav.in-page .columns-subnav-label {
+    font-weight: 400;
+  }
+
+  .columns-subnav.in-page .columns-subnav-item > a {
+    padding: 0 20px;
+  }
+
+  .columns-subnav.in-page .columns-subnav-has-dropdown {
+    padding: 0 10px 0 20px;
+  }
+
+  .columns-subnav.in-page .columns-subnav-toggle {
+    width: 30px;
+  }
+
+  .columns-subnav.in-page .columns-subnav-item:hover,
+  .columns-subnav.in-page .columns-subnav-open {
+    background-color: transparent;
+    color: rgb(123 228 231);
+  }
+
+  .columns-subnav.in-page .columns-subnav-open > .columns-subnav-label,
+  .columns-subnav.in-page .columns-subnav-item:hover > a,
+  .columns-subnav.in-page .columns-subnav-item:hover > .columns-subnav-label {
+    font-weight: 700;
+  }
+
+  .columns-subnav.in-page .columns-subnav-dropdown {
+    padding: 0 calc(max(var(--section-padding), (100% - 1200px) / 2) + 10px) 0 calc(max(var(--section-padding), (100% - 1200px) / 2) + 53px);
+    color: #fff;
+  }
+
+  .columns-subnav.in-page .columns-subnav-dropdown li {
+    padding: 4px 15px 0;
+    border-bottom: 4px solid transparent;
+  }
+
+  .columns-subnav.in-page .columns-subnav-dropdown li:hover {
+    border-bottom-color: #fff;
+    text-shadow: none;
+  }
+
+  .columns-subnav.in-page .columns-subnav-actions {
+    gap: 25px;
+    padding: 0 44px 0 0;
+  }
+
+  .columns-subnav.in-page .columns-subnav-actions a.button:any-link {
+    padding: 14px 14px 11px 16px;
+    border: 0;
+    color: var(--dark-color);
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 16px;
+  }
+
+  .columns-subnav.in-page .columns-subnav-actions a.button:hover,
+  .columns-subnav.in-page .columns-subnav-actions a.button:focus-visible {
+    color: var(--dark-color);
   }
 }
