@@ -1,0 +1,12 @@
+{
+  "status": "success",
+  "url": "https://newsroom.boozallen.com/press-releases",
+  "path": "press-releases",
+  "timestamp": "2026-10-12T20:36:15.297Z",
+  "title": "Press Releases | Booz Allen Hamilton Inc.",
+  "template": "press-releases",
+  "blocks": [
+    "hero-banner",
+    "cards-listing"
+  ]
+}

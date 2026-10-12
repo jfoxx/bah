@@ -12,10 +12,11 @@
   "contentPattern": "background image + heading + paragraph + button",
   "usage": {
     "pagesUsing": [
-      "https://www.boozallen.com/expertise/artificial-intelligence.html"
+      "https://www.boozallen.com/expertise/artificial-intelligence.html",
+      "https://newsroom.boozallen.com/press-releases"
     ],
-    "reuseCount": 1,
-    "lastUsed": "2026-10-02"
+    "reuseCount": 2,
+    "lastUsed": "2026-10-12"
   },
   "options": [
     {

@@ -1,0 +1,20 @@
+{
+  "variantName": "cards-listing",
+  "baseBlock": "cards",
+  "canonicalModel": "config",
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "balanced",
+    "purpose": "dynamic-index-listing",
+    "imagePattern": "landscape-thumb",
+    "structure": "query-index link + optional tag + optional page size (renders: year filter + image + title link + date + excerpt + tag rows + pager)"
+  },
+  "contentPattern": "dynamic query-index listing: config row (index link) + optional Tag / Page Size rows; renders year filter, image-left card rows, pager",
+  "usage": {
+    "pagesUsing": ["https://newsroom.boozallen.com/press-releases"],
+    "reuseCount": 1,
+    "lastUsed": "2026-10-12"
+  },
+  "options": [],
+  "memberVariantIds": ["cards-listing"]
+}

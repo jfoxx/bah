@@ -483,6 +483,56 @@
           ]
         }
       ]
+    },
+    {
+      "name": "press-releases",
+      "urls": [
+        "https://newsroom.boozallen.com/press-releases"
+      ],
+      "representativeUrl": "https://newsroom.boozallen.com/press-releases",
+      "description": "Newsroom press release listing: image hero + dynamic query-index listing (year filter, list, pager)",
+      "blocks": [
+        {
+          "name": "hero-banner",
+          "instances": [
+            "#content > div.overview-hero-wrapper"
+          ]
+        },
+        {
+          "name": "cards-listing",
+          "instances": [
+            ".block-nir-news__widget"
+          ]
+        }
+      ],
+      "urlPattern": "/press-releases",
+      "sections": [
+        {
+          "id": "rc1",
+          "name": "Overview hero",
+          "selector": [
+            "#content > div.overview-hero-wrapper"
+          ],
+          "style": null,
+          "blocks": [
+            "hero-banner"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "rc2",
+          "name": "Press release listing",
+          "selector": [
+            "#block-client-site-202-content",
+            ".block-nir-news__widget"
+          ],
+          "style": null,
+          "blocks": [
+            "cards-listing"
+          ],
+          "defaultContent": []
+        }
+      ]
     }
   ],
   "metadata": {
