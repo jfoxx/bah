@@ -8,10 +8,14 @@
  *   | H2, paragraph | image     |   <- text left
  *   | image | H5, H2, paragraph |   <- text right
  * Without an image the text renders as a plain half-width panel.
+ *
+ * Options:
+ *   Columns Backdrop (dark) - dark photo band; white heading/text and a white button
  */
 import { createOptimizedPicture } from '../../scripts/aem.js';
 
-const OPTION_CLASSES = [];
+// dark: dark photo band with white text and a white button
+const OPTION_CLASSES = ['dark'];
 
 function isImageCell(cell) {
   if (!cell.querySelector('picture')) return false;

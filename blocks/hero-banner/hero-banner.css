@@ -115,3 +115,55 @@ main .hero-banner a.button:focus-visible {
     line-height: 72px;
   }
 }
+
+/*
+ * ---- option: light (boozallen.com .overview-hero-wrapper) ----
+ * < 640px: 220px photo, heading on a black bar below it (white text).
+ * >= 640px: black heading over the light photo, 450px tall (430px from 1024px).
+ */
+.hero-banner.light .hero-banner-media {
+  position: static;
+  height: 220px;
+}
+
+.hero-banner.light .hero-banner-content {
+  min-height: 0;
+  margin: 0 auto;
+  padding: 24px 24px 24px 8px;
+  background-color: var(--dark-color);
+}
+
+.hero-banner.light h1 {
+  text-shadow: none;
+}
+
+@media (width >= 640px) {
+  .hero-banner.light .hero-banner-media {
+    position: absolute;
+    height: auto;
+  }
+
+  .hero-banner.light .hero-banner-content {
+    min-height: 450px;
+    padding: 0 20px;
+    background-color: transparent;
+    color: var(--dark-color);
+  }
+
+  .hero-banner.light h1,
+  .hero-banner.light .hero-banner-content p {
+    color: var(--dark-color);
+  }
+
+  .hero-banner.light.hero-banner-no-image {
+    background-color: var(--light-color);
+  }
+}
+
+@media (width >= 1024px) {
+  /* source centres the heading 50px above the middle: top: calc(50% - 50px) */
+  .hero-banner.light .hero-banner-content {
+    min-height: 430px;
+    padding-bottom: 100px;
+  }
+}

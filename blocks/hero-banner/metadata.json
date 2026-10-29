@@ -11,10 +11,20 @@
   },
   "contentPattern": "background image + heading + paragraph + button",
   "usage": {
-    "pagesUsing": ["https://www.boozallen.com/expertise/artificial-intelligence.html"],
-    "reuseCount": 1,
-    "lastUsed": "2026-10-02"
+    "pagesUsing": [
+      "https://www.boozallen.com/expertise/artificial-intelligence.html",
+      "https://newsroom.boozallen.com/press-releases"
+    ],
+    "reuseCount": 2,
+    "lastUsed": "2026-10-12"
   },
-  "options": [],
-  "memberVariantIds": ["hero-banner"]
+  "options": [
+    {
+      "class": "light",
+      "label": "Light"
+    }
+  ],
+  "memberVariantIds": [
+    "hero-banner"
+  ]
 }

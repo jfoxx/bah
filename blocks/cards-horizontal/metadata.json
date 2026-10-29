@@ -1,0 +1,20 @@
+{
+  "variantName": "cards-horizontal",
+  "baseBlock": "cards",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "compact",
+    "purpose": "article-teaser-row",
+    "imagePattern": "landscape-thumb",
+    "structure": "image + eyebrow + title link"
+  },
+  "contentPattern": "image + eyebrow + title link",
+  "usage": {
+    "pagesUsing": ["https://www.boozallen.com/markets/defense/ai-for-military.html"],
+    "reuseCount": 1,
+    "lastUsed": "2026-10-02"
+  },
+  "options": [],
+  "memberVariantIds": ["cards-horizontal"]
+}

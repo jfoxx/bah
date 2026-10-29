@@ -286,6 +286,28 @@ main img {
   width: 100%;
 }
 
+/* default content: body copy is black on the source (white on dark sections) */
+main .default-content-wrapper {
+  color: var(--heading-color);
+}
+
+main .default-content-wrapper h2 {
+  margin-bottom: 28px;
+}
+
+main .default-content-wrapper ul {
+  padding-left: 60px;
+}
+
+main .default-content-wrapper li strong {
+  font-weight: 600;
+}
+
+/* heading groups directly above a card slider are centered */
+main .default-content-wrapper:has(+ .cards-carousel-wrapper) {
+  text-align: center;
+}
+
 /* sections */
 main > .section {
   margin: 0;
@@ -340,10 +362,6 @@ main .section.dark h6 {
   color: #fff;
 }
 
-main .section.dark .default-content-wrapper {
-  text-align: center;
-}
-
 main .section.dark-gray {
   background-color: var(--dark-gray-color);
   color: #fff;
@@ -358,15 +376,13 @@ main .section.dark-gray h6 {
   color: #fff;
 }
 
-/* eyebrow + heading groups above sliders are centered */
-main .section.dark-gray .default-content-wrapper,
-main .section.light .default-content-wrapper {
-  text-align: center;
+main .section.dark .default-content-wrapper,
+main .section.dark-gray .default-content-wrapper {
+  color: #fff;
 }
 
 main .section .default-content-wrapper h5 + h2 {
   margin-top: -11px;
-  margin-bottom: 28px;
 }
 
 /* a button on its own below a block is centered */
@@ -374,8 +390,12 @@ main .default-content-wrapper:has(> .button-wrapper:only-child) {
   text-align: center;
 }
 
-/* homepage mission statement: display-size heading on black */
-main .section.dark .default-content-wrapper h2 {
+/* homepage mission statement: text-only dark section, centered display heading */
+main .section.dark > .default-content-wrapper:only-child {
+  text-align: center;
+}
+
+main .section.dark > .default-content-wrapper:only-child h2 {
   font-size: var(--heading-font-size-xxl);
 }
 

@@ -11,10 +11,19 @@
   },
   "contentPattern": "background image | eyebrow + heading + paragraph",
   "usage": {
-    "pagesUsing": ["https://www.boozallen.com/expertise/artificial-intelligence.html"],
+    "pagesUsing": [
+      "https://www.boozallen.com/expertise/artificial-intelligence.html"
+    ],
     "reuseCount": 2,
     "lastUsed": "2026-10-02"
   },
-  "options": [],
-  "memberVariantIds": ["columns-backdrop"]
+  "options": [
+    {
+      "class": "dark",
+      "label": "Dark"
+    }
+  ],
+  "memberVariantIds": [
+    "columns-backdrop"
+  ]
 }

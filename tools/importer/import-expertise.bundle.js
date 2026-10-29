@@ -42,8 +42,34 @@ var CustomImportScript = (() => {
   });
 
   // tools/importer/parsers/hero-banner.js
+  var SITE_ORIGIN = "https://www.boozallen.com";
+  function imageFromBackground(el, document2) {
+    if (!el) return null;
+    let value = el.style && el.style.backgroundImage || "";
+    if (!/url\(/.test(value)) {
+      const raw = el.getAttribute("style") || "";
+      const m = raw.match(/background(?:-image)?\s*:[^;]*url\([^)]*\)/i);
+      if (m) value = m[0].replace(/\\([0-9a-f]{1,6})\s?/gi, (s, hex) => String.fromCodePoint(parseInt(hex, 16)));
+    }
+    if (!/url\(/.test(value) && document2.defaultView && document2.defaultView.getComputedStyle) {
+      value = document2.defaultView.getComputedStyle(el).backgroundImage || "";
+    }
+    const url = (value.match(/url\(\s*['"]?([^'")]+)['"]?\s*\)/) || [])[1];
+    if (!url || url.startsWith("data:")) return null;
+    let src;
+    try {
+      src = new URL(url.trim(), SITE_ORIGIN).href;
+    } catch (e) {
+      return null;
+    }
+    const img = document2.createElement("img");
+    img.src = src;
+    return img;
+  }
   function parse(element, { document: document2 }) {
-    const bgImg = element.querySelector(".big-hero-image img, img.hero-background, picture img");
+    const isOverviewHero = element.classList.contains("overview-hero-wrapper") || !!element.querySelector(".overview-hero-data");
+    const isLight = isOverviewHero || !!element.querySelector("h1.title--black");
+    const bgImg = element.querySelector(".big-hero-image img, img.hero-background, picture img") || element.querySelector(".overview-hero-background img") || (isOverviewHero ? imageFromBackground(element.querySelector(".overview-hero-background"), document2) : null);
     const heading = element.querySelector('h1, h2, [class*="big-hero__title"]');
     const paragraphs = [...element.querySelectorAll(
       '.big-hero__content-text p, .big-hero__content-stacked > p, [class*="emphasis-text"]'
@@ -60,18 +86,24 @@ var CustomImportScript = (() => {
     contentCell.push(...paragraphs);
     contentCell.push(...ctas);
     if (contentCell.length) cells.push([contentCell]);
-    const block = WebImporter.Blocks.createBlock(document2, { name: "hero-banner", cells });
+    const variants = isLight ? ["light"] : [];
+    const block = WebImporter.Blocks.createBlock(document2, { name: "hero-banner", variants, cells });
     element.replaceWith(block);
   }
 
   // tools/importer/parsers/columns-subnav.js
+  var SPAN_TEXT = ".in-page-horizontal-nav__nav-item-text, .in-page-horizontal-nav-item__submenu-list-item-text";
   function linkText(a) {
     const clone = a.cloneNode(true);
     clone.querySelectorAll("div, button, img, span, svg").forEach((n) => n.remove());
     return clone.textContent.replace(/\s+/g, " ").trim();
   }
   function makeLink(document2, a) {
-    const text = linkText(a);
+    let text = linkText(a);
+    if (!text) {
+      const label = a.querySelector(SPAN_TEXT);
+      text = label ? label.textContent.replace(/\s+/g, " ").trim() : "";
+    }
     if (!text) return null;
     const link = document2.createElement("a");
     link.href = a.getAttribute("href") || a.href || "";
@@ -81,11 +113,12 @@ var CustomImportScript = (() => {
   function parse2(element, { document: document2 }) {
     let items = [...element.querySelectorAll("li.horizontal-navigation__link")];
     if (!items.length) items = [...element.querySelectorAll("ul.bah-navigation__link-container > li")];
+    if (!items.length) items = [...element.querySelectorAll("ul.in-page-horizontal-nav__linkList > li")];
     const list = document2.createElement("ul");
     items.forEach((li) => {
-      const topAnchor = li.querySelector("a.horizontal-navigation__link-anchor") || li.querySelector("a:not(.horizontal-navigation__item-submenu-link)");
+      const topAnchor = li.querySelector("a.horizontal-navigation__link-anchor") || li.querySelector(":scope > a.in-page-horizontal-nav__nav-item") || li.querySelector("a:not(.horizontal-navigation__item-submenu-link)");
       const subAnchors = [...li.querySelectorAll(
-        ".horizontal-navigation__sub-links a, a.horizontal-navigation__item-submenu-link"
+        ".horizontal-navigation__sub-links a, a.horizontal-navigation__item-submenu-link, .in-page-horizontal-nav-item__mobile-submenu a"
       )].filter((a, i, arr) => arr.indexOf(a) === i);
       const topLink = topAnchor ? makeLink(document2, topAnchor) : null;
       if (!topLink && !subAnchors.length) return;
@@ -104,6 +137,18 @@ var CustomImportScript = (() => {
       list.append(item);
     });
     let ctas = [...element.querySelectorAll(".horizontal-navigation__cta-buttons-container a")];
+    if (!ctas.length) {
+      const seen = /* @__PURE__ */ new Set();
+      ctas = [...element.querySelectorAll(".cta-items a, .cta-group a, a.in-page-horizontal-nav__cta")].filter((a) => {
+        const key = `${a.getAttribute("href")}|${a.textContent.replace(/\s+/g, " ").trim()}`;
+        if (seen.has(key)) return false;
+        seen.add(key);
+        return true;
+      });
+      ctas.forEach((a) => {
+        a.textContent = a.textContent.replace(/\s+/g, " ").trim();
+      });
+    }
     if (!ctas.length) ctas = [...element.querySelectorAll(".button-wrapper a, a.button")];
     const ctaCell = ctas.filter((a) => a.textContent.trim()).map((a) => {
       const p = document2.createElement("p");
@@ -115,7 +160,9 @@ var CustomImportScript = (() => {
       return;
     }
     const cells = [[list.children.length ? list : "", ctaCell.length ? ctaCell : ""]];
-    const block = WebImporter.Blocks.createBlock(document2, { name: "columns-subnav", cells });
+    const inPage = element.matches(".in-page-horizontal-nav") || !!element.querySelector(".in-page-horizontal-nav__linkList");
+    const variants = inPage ? ["in-page"] : [];
+    const block = WebImporter.Blocks.createBlock(document2, { name: "columns-subnav", variants, cells });
     element.replaceWith(block);
   }
 
@@ -222,12 +269,46 @@ var CustomImportScript = (() => {
   }
 
   // tools/importer/parsers/columns-backdrop.js
+  var SITE_ORIGIN2 = "https://www.boozallen.com";
+  function imageFromBackground2(el, document2) {
+    if (!el) return null;
+    let value = el.style && el.style.backgroundImage || "";
+    if (!/url\(/.test(value)) {
+      const raw = el.getAttribute("style") || "";
+      const m = raw.match(/background(?:-image)?\s*:[^;]*url\([^)]*\)/i);
+      if (m) value = m[0].replace(/\\([0-9a-f]{1,6})\s?/gi, (s, hex) => String.fromCodePoint(parseInt(hex, 16)));
+    }
+    if (!/url\(/.test(value) && document2.defaultView && document2.defaultView.getComputedStyle) {
+      value = document2.defaultView.getComputedStyle(el).backgroundImage || "";
+    }
+    const url = (value.match(/url\(\s*['"]?([^'")]+)['"]?\s*\)/) || [])[1];
+    if (!url || url.startsWith("data:")) return null;
+    let src;
+    try {
+      src = new URL(url.trim(), SITE_ORIGIN2).href;
+    } catch (e) {
+      return null;
+    }
+    const img = document2.createElement("img");
+    img.src = src;
+    return img;
+  }
   function collectContent(column) {
     const matches = [...column.querySelectorAll("h1, h2, h3, h4, h5, h6, p, ul, ol, a.button")];
     return matches.filter((el) => !matches.some((o) => o !== el && o.contains(el))).filter((el) => el.textContent.trim());
   }
   function parse5(element, { document: document2 }) {
-    const bgImg = element.querySelector(".grid-layout__background .background-image img") || element.querySelector(".grid-layout__background picture img") || element.querySelector('.grid-layout__background img:not([src^="data:"])');
+    const genericBlocks = [...element.querySelectorAll(".generic-block-image")];
+    if (element.matches(".generic-block-image")) genericBlocks.unshift(element);
+    const isGenericBlock = genericBlocks.length > 0;
+    const isDark = isGenericBlock && genericBlocks.some((b) => b.classList.contains("black"));
+    let bgImg = element.querySelector(".grid-layout__background .background-image img") || element.querySelector(".grid-layout__background picture img") || element.querySelector('.grid-layout__background img:not([src^="data:"])');
+    if (!bgImg && isGenericBlock) {
+      for (const b of genericBlocks) {
+        bgImg = imageFromBackground2(b, document2);
+        if (bgImg) break;
+      }
+    }
     let columns = [...element.querySelectorAll(".column-bah > .columns")];
     if (!columns.length) columns = [...element.querySelectorAll('.column_bah .columns[class*="large-"]')];
     const contents = columns.map((col) => collectContent(col));
@@ -247,7 +328,8 @@ var CustomImportScript = (() => {
       row = imageFirst ? [bgImg, contents[textIdx]] : [contents[textIdx], bgImg];
     }
     const cells = [row];
-    const block = WebImporter.Blocks.createBlock(document2, { name: "columns-backdrop", cells });
+    const variants = isDark ? ["dark"] : [];
+    const block = WebImporter.Blocks.createBlock(document2, { name: "columns-backdrop", variants, cells });
     element.replaceWith(block);
   }
 
@@ -410,7 +492,8 @@ var CustomImportScript = (() => {
     if (hookName === TransformHook.afterTransform) {
       element.querySelectorAll("a.button").forEach((a) => {
         if (a.closest("strong, em")) return;
-        const wrapper = element.ownerDocument.createElement(a.classList.contains("default-style") ? "em" : "strong");
+        const teal = a.classList.contains("default-style") || a.classList.contains("button--primary-on-light") && !a.classList.contains("in-page-horizontal-nav__cta");
+        const wrapper = element.ownerDocument.createElement(teal ? "em" : "strong");
         a.replaceWith(wrapper);
         wrapper.append(a);
       });
@@ -431,6 +514,17 @@ var CustomImportScript = (() => {
         // columns-backdrop parser matches '.grid-layout__wrapper > .grid-layout', which contains
         // its .grid-layout__background image, so that image is already in the block by now.
         ".grid-layout__background",
+        // Defense/market pages: desktop-only duplicate of the in-page nav submenus, sibling of
+        // the columns-subnav source (#in-page-horizontal-nav) inside .in_page_horizontal_navigation:
+        // <div class="in-page-submenu__container hide-for-small-only">
+        "div.in-page-submenu__container",
+        // Empty script-injected body-level helpers on defense pages:
+        // <div id="bah-subnav-sentinel_in-page-horizontal-nav">, <div id="mktoStyleLoaded">,
+        // and the empty Marketo XD form <form class="mktoForm ..."> directly under <body>
+        // (the real form lives inside .marketo_form, handled by the embed-marketo parser)
+        '[id^="bah-subnav-sentinel"]',
+        "#mktoStyleLoaded",
+        "body > form.mktoForm",
         // Remaining non-authorable embeds/tracking
         "iframe",
         "noscript",

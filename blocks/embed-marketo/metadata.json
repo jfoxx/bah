@@ -1,0 +1,20 @@
+{
+  "variantName": "embed-marketo",
+  "baseBlock": "embed",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "colorScheme": "dark",
+    "density": "spacious",
+    "purpose": "lead-form",
+    "imagePattern": "noimg",
+    "structure": "marketo form id"
+  },
+  "contentPattern": "marketo form id (+ optional munchkin id and Marketo instance link)",
+  "usage": {
+    "pagesUsing": ["https://www.boozallen.com/markets/defense/ai-for-military.html"],
+    "reuseCount": 1,
+    "lastUsed": "2026-10-02"
+  },
+  "options": [],
+  "memberVariantIds": ["embed-marketo"]
+}

@@ -6,10 +6,14 @@
  *   | Hero Banner                     |
  *   | background picture              |
  *   | H1, paragraph, Learn More link  |
+ *
+ * Options:
+ *   Hero Banner (light) - light photo, black heading only (no intro/CTA required), ~430px tall
  */
 import { createOptimizedPicture } from '../../scripts/aem.js';
 
-const OPTION_CLASSES = [];
+// light: light photo background, dark heading-only banner (shorter than the default)
+const OPTION_CLASSES = ['light'];
 
 function isImageOnly(cell) {
   if (!cell.querySelector('picture')) return false;
