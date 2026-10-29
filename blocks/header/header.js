@@ -2,13 +2,11 @@
 const isDesktop = window.matchMedia('(width >= 900px)');
 
 /**
- * Fetches the nav fragment: /content first (local preview), then root (DA/EDS).
+ * Fetches the header navigation fragment.
  * @returns {Promise<{html: string, base: URL}|null>}
  */
 async function fetchNav() {
-  // metadata-independent: /content first (localhost), then root (DA/EDS prod)
-  let resp = await fetch('/content/nav.plain.html');
-  if (!resp.ok) resp = await fetch('/nav.plain.html');
+  const resp = await fetch('/fragments/nav/header.plain.html');
   if (!resp.ok) return null;
   return { html: await resp.text(), base: new URL(resp.url, window.location.href) };
 }

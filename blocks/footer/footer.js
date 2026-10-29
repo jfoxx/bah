@@ -1,11 +1,9 @@
 /**
- * Fetches the footer fragment: /content first (local preview), then root (DA/EDS).
+ * Fetches the footer navigation fragment.
  * @returns {Promise<{html: string, base: URL}|null>}
  */
 async function fetchFooter() {
-  // metadata-independent: /content first (localhost), then root (DA/EDS prod)
-  let resp = await fetch('/content/footer.plain.html');
-  if (!resp.ok) resp = await fetch('/footer.plain.html');
+  const resp = await fetch('/fragments/nav/footer.plain.html');
   if (!resp.ok) return null;
   return { html: await resp.text(), base: new URL(resp.url, window.location.href) };
 }
