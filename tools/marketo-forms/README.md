@@ -35,4 +35,5 @@ EW delegates clipboard-write permission to extension iframes. The picker also
 works independently in a browser. Use an HTTPS deployed URL in EW, not localhost.
 Site configuration is separate from this code; this change does not modify it.
 
-Controls use the supplied Marketo logo asset.
+The header uses the supplied Marketo logo asset. Interface icons are adapted
+from Lucide (ISC license): https://lucide.dev/license.
