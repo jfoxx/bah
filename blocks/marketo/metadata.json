@@ -1,0 +1,15 @@
+{
+  "variantName": "marketo",
+  "baseBlock": "embed",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "balanced",
+    "purpose": "lead-form",
+    "imagePattern": "noimg",
+    "structure": "Marketo form link and optional Base URL override"
+  },
+  "contentPattern": "Marketo form link containing account and form IDs",
+  "options": [],
+  "memberVariantIds": ["marketo"]
+}

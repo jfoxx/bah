@@ -1,0 +1,98 @@
+/* stylelint-disable selector-class-pattern */
+
+.marketo {
+  min-height: 216px;
+  color: inherit;
+}
+
+.marketo .mktoForm {
+  width: 100% !important;
+  max-width: 720px;
+  padding: 0;
+  color: inherit;
+  font-family: var(--body-font-family);
+  font-size: 16px;
+}
+
+.marketo .mktoForm .mktoFormRow,
+.marketo .mktoForm .mktoFormCol,
+.marketo .mktoForm .mktoFieldWrap {
+  box-sizing: border-box;
+  width: 100% !important;
+  max-width: 100%;
+  min-width: 0;
+}
+
+.marketo .mktoForm .mktoLabel {
+  display: block;
+  float: none;
+  width: auto !important;
+  margin-bottom: 8px;
+  color: inherit;
+  line-height: 1.5;
+}
+
+.marketo .mktoForm input:not([type='checkbox'], [type='radio'], [type='hidden']),
+.marketo .mktoForm select,
+.marketo .mktoForm textarea {
+  box-sizing: border-box;
+  width: 100% !important;
+  max-width: 100%;
+  min-height: 44px;
+  padding: 10px 12px;
+  border: 1px solid var(--dark-gray-color);
+  border-radius: 0;
+  background: var(--background-color);
+  color: var(--text-color);
+  font: inherit;
+}
+
+.marketo .mktoForm input:focus-visible,
+.marketo .mktoForm select:focus-visible,
+.marketo .mktoForm textarea:focus-visible,
+.marketo .mktoForm button:focus-visible {
+  outline: 2px solid var(--link-color);
+  outline-offset: 3px;
+}
+
+.marketo .mktoForm .mktoCheckboxList,
+.marketo .mktoForm .mktoRadioList {
+  box-sizing: border-box;
+  max-width: 100%;
+}
+
+.marketo .mktoForm .mktoCheckboxList label,
+.marketo .mktoForm .mktoRadioList label {
+  color: inherit;
+}
+
+.marketo .mktoForm .mktoGutter,
+.marketo .mktoForm .mktoOffset {
+  display: none;
+}
+
+.marketo .mktoForm .mktoButtonWrap {
+  margin-left: 0 !important;
+}
+
+.marketo .mktoForm .mktoButtonWrap .mktoButton {
+  min-height: 44px;
+  padding: 12px 24px;
+  border: 0;
+  border-radius: 0;
+  background: var(--teal-button-color);
+  color: #fff;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.marketo .mktoForm .mktoButtonWrap .mktoButton:hover {
+  background: var(--teal-button-hover-color);
+}
+
+.marketo .mktoForm .mktoHtmlText {
+  width: auto !important;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
