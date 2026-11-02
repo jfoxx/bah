@@ -1,0 +1,287 @@
+:root {
+    font-family: "Adobe Clean", "Trebuchet MS", sans-serif;
+    font-size: 14px;
+    color: #252525;
+    background: #fff;
+
+    --accent: #006f78;
+    --muted: #656565;
+    --line: #dedede;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+}
+
+main {
+    max-width: 860px;
+    margin: auto;
+    padding: 24px;
+}
+
+button,
+input {
+    font: inherit;
+}
+
+button,
+input[type="radio"] {
+    cursor: pointer;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+.heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.eyebrow {
+    margin: 0 0 6px;
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 700;
+}
+
+h1 {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    margin: 0;
+    font-size: 24px;
+    line-height: 1.3;
+}
+
+.demo {
+    padding: 3px 6px;
+    border: 1px solid #d5c87d;
+    border-radius: 3px;
+    color: #675616;
+    background: #fff9db;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.icon-button {
+    display: grid;
+    flex: 0 0 40px;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    background: #fff;
+    color: var(--accent);
+}
+
+.icon-button:hover {
+    border-color: var(--accent);
+    background: #eff8f8;
+}
+
+.icon-button:disabled {
+    cursor: progress;
+    opacity: 0.5;
+}
+
+.marketo-icon {
+    display: block;
+    width: 18px;
+    height: 18px;
+}
+
+.toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+    margin-top: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--line);
+}
+
+.search {
+    display: flex;
+    flex: 1 1 220px;
+    align-items: center;
+    gap: 8px;
+    min-width: 0;
+    padding: 0 12px;
+    border: 1px solid #999;
+    border-radius: 4px;
+}
+
+.search .marketo-icon {
+    flex-shrink: 0;
+    color: var(--muted);
+}
+
+.search input {
+    width: 100%;
+    min-width: 0;
+    height: 40px;
+    border: 0;
+    outline: none;
+    background: transparent;
+}
+
+.search:focus-within {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
+
+#count {
+    margin: 0;
+    color: var(--muted);
+    font-size: 12px;
+    font-variant-numeric: tabular-nums;
+}
+
+#forms {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+#forms li {
+    border-bottom: 1px solid var(--line);
+}
+
+.form-option {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-height: 80px;
+    padding: 16px 8px;
+    cursor: pointer;
+}
+
+.form-option:hover {
+    background: #f5f7f7;
+}
+
+.form-option:has(input:checked) {
+    background: #edf7f7;
+    box-shadow: inset 3px 0 var(--accent);
+}
+
+.form-option input {
+    flex-shrink: 0;
+    width: 16px;
+    height: 16px;
+    margin: 0;
+    accent-color: var(--accent);
+}
+
+.form-content {
+    display: grid;
+    flex: 1;
+    gap: 6px;
+    min-width: 0;
+}
+
+.form-name {
+    font-weight: 600;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+}
+
+.form-details {
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+}
+
+.form-status {
+    flex-shrink: 0;
+    color: #357044;
+    font-size: 11px;
+    text-transform: capitalize;
+}
+
+#empty {
+    padding: 24px 0;
+    color: var(--muted);
+}
+
+.selection {
+    margin-top: 24px;
+    padding-top: 4px;
+}
+
+h2 {
+    margin: 0 0 8px;
+    font-size: 16px;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+}
+
+#selected-description {
+    margin: 0 0 20px;
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+}
+
+.selection > label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.url-row {
+    display: flex;
+    gap: 8px;
+}
+
+#form-url {
+    width: 100%;
+    min-width: 0;
+    height: 40px;
+    padding: 8px;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    background: #fafafa;
+    font-size: 12px;
+}
+
+.message {
+    min-height: 36px;
+    margin: 12px 0 0;
+    color: var(--accent);
+    font-size: 12px;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+}
+
+:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+}
+
+@media (width <= 400px) {
+    main {
+        padding: 16px;
+    }
+
+    .form-option {
+        flex-wrap: wrap;
+    }
+
+    .form-status {
+        margin-left: 28px;
+    }
+}

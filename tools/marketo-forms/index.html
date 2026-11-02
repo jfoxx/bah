@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Marketo Forms</title>
+    <link rel="stylesheet" href="./marketo-forms.css">
+    <script type="module" src="./marketo-forms.js"></script>
+  </head>
+  <body>
+    <main>
+      <header class="heading">
+        <div><p class="eyebrow">Booz Allen</p><h1>Marketo Forms <span class="demo">Demo</span></h1></div>
+        <button id="refresh" class="icon-button" type="button" title="Refresh forms" aria-label="Refresh forms">
+          <img class="marketo-icon" src="./marketo_logo_icon_168994.svg" alt="" width="18" height="18">
+        </button>
+      </header>
+      <div class="toolbar">
+        <label class="search" for="query">
+          <img class="marketo-icon" src="./marketo_logo_icon_168994.svg" alt="" width="18" height="18">
+          <input id="query" type="search" placeholder="Search forms" aria-label="Search forms by name, ID, or folder" autocomplete="off">
+        </label>
+        <p id="count" role="status">Loading forms...</p>
+      </div>
+      <section class="catalog" aria-label="Available forms" aria-busy="true">
+        <ul id="forms" aria-label="Forms"></ul>
+        <p id="empty" hidden>No matching forms.</p>
+      </section>
+      <section id="selection" class="selection" aria-label="Selected form" hidden>
+        <h2 id="selected-name"></h2>
+        <p id="selected-description"></p>
+        <label for="form-url">Form URL</label>
+        <div class="url-row">
+          <input id="form-url" type="url" readonly spellcheck="false">
+          <button id="copy" class="icon-button" type="button" title="Copy form URL" aria-label="Copy form URL">
+            <img class="marketo-icon" src="./marketo_logo_icon_168994.svg" alt="" width="18" height="18">
+          </button>
+        </div>
+      </section>
+      <p id="message" class="message" role="status" aria-live="polite" aria-atomic="true"></p>
+    </main>
+  </body>
+</html>
