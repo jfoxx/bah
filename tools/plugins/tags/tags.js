@@ -261,7 +261,7 @@ function displayTaxonomy(taxonomyData, actions) {
     if (selectedTags.size === 0) {
       const empty = document.createElement('div');
       empty.className = 'selected-tags-empty';
-      empty.textContent = 'No tags selected yet';
+      empty.textContent = 'No tags selected';
       selectedTagsSummary.appendChild(empty);
       return;
     }
