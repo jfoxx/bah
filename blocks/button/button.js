@@ -1,6 +1,6 @@
 export default function decorate(block) {
   const settings = {};
-  const keys = ['open', 'externalize', 'alignment', 'appearance', 'style'];
+  const keys = ['open in new tab', 'open', 'externalize', 'alignment', 'appearance', 'style'];
 
   [...block.children].forEach((row) => {
     const [keyCell, valueCell] = row.children;
@@ -16,9 +16,11 @@ export default function decorate(block) {
   block.dataset.appearance = settings.appearance === 'link' ? 'link' : 'button';
   block.dataset.style = settings.style === 'secondary' ? 'secondary' : 'primary';
 
+  const openInNewTab = settings['open in new tab'] !== undefined
+    ? settings['open in new tab'] === 'true' : settings.open === '_blank';
   block.querySelectorAll('.button-content a[href]').forEach((link) => {
     link.classList.remove('button', 'primary', 'secondary', 'accent');
-    link.target = settings.open === '_blank' ? '_blank' : '_self';
+    link.target = openInNewTab ? '_blank' : '_self';
     if (link.target === '_blank') link.relList.add('noopener');
     else link.relList.remove('noopener');
   });

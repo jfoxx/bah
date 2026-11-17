@@ -12,14 +12,16 @@ reordered or omitted; the link row is found by its hyperlink, not its position.
 | Button | |
 | --- | --- |
 | [Explore Careers](https://www.boozallen.com/careers.html) | (merged cell) |
-| Open | _self |
-| Externalize | false |
+| Open in new tab | |
+| Externalize | |
 | Alignment | left |
 | Appearance | button |
 | Style | primary |
 
-Defaults are `_self`, `left`, `button`, and `primary`. Invalid settings use those
-defaults. `Externalize` is stored for the demo but deliberately does nothing:
+Checkboxes store `true` when checked and an empty cell when unchecked.
+Defaults are the current window, `left`, `button`, and `primary`. Invalid settings
+use those defaults. The legacy `Open` setting (`_self` / `_blank`) is supported
+when `Open in new tab` is absent. `Externalize` is stored for the demo but deliberately does nothing:
 the destination URL is never changed. New-tab links get `rel="noopener"` while
 preserving other relationship tokens. Links remain links, not ARIA buttons.
 Style applies only to Button appearance; Text Link uses the site's link styles.
@@ -32,21 +34,18 @@ The single hyperlink field exposes both its text and destination.
 
 Add the following rows to the existing library index's **options** sheet:
 
-| blocks | key | values | type | checked | unchecked |
-| --- | --- | --- | --- | --- | --- |
-| button | Open | | checkbox | _blank | _self |
-| button | Externalize | | checkbox | true | false |
-| button | Alignment | Left=left\|Center=center\|Right=right | | | |
-| button | Appearance | Button=button\|Text Link=link | | | |
-| button | Style | Primary=primary\|Secondary=secondary | | | |
+| blocks | key | values | type |
+| --- | --- | --- | --- |
+| button | Open in new tab | true | checkbox |
+| button | Externalize | true | checkbox |
+| button | Alignment | Left=left\|Center=center\|Right=right | |
+| button | Appearance | Button=button\|Text Link=link | |
+| button | Style | Primary=primary\|Secondary=secondary | |
 
 The checkboxes require the customized Block Inspector from `ew-extensions`.
-The Open field is labeled **Open in a new tab** in Library Metadata. Checked
-stores `_blank`; unchecked stores `_self`, preserving existing content values.
 Configure the site's Inspector extension to load that deployed version. The
 standard Inspector can instead use `No=false|Yes=true` in the `values` column
-for Externalize and `Current window=_self|New tab=_blank` for Open, leaving
-the other columns blank. Externalize remains a demo setting with no URL
+for both checkbox fields, leaving `type` blank. Externalize remains a demo setting with no URL
 transformation in either configuration.
 
 Upload the library template to the site's existing Blocks library folder, then
