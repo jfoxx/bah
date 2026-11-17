@@ -1,0 +1,75 @@
+.button.block {
+  --button-background: var(--dark-color);
+  --button-foreground: var(--background-color);
+  --button-hover: #333;
+
+  text-align: left;
+}
+
+.button.block[data-alignment="center"] {
+  text-align: center;
+}
+
+.button.block[data-alignment="right"] {
+  text-align: right;
+}
+
+.section.dark .button.block[data-style="primary"] {
+  --button-background: var(--background-color);
+  --button-foreground: var(--dark-color);
+  --button-hover: #d9d9d9;
+}
+
+.button.block[data-style="secondary"] {
+  --button-background: var(--teal-button-color);
+  --button-hover: var(--teal-button-hover-color);
+}
+
+.button.block .button-content p {
+  margin: 0;
+}
+
+.button.block .button-content a:any-link {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 100%;
+  padding: 14px 14px 12px;
+  background-color: var(--button-background);
+  color: var(--button-foreground);
+  font-size: 16px;
+  font-weight: 700;
+  font-style: normal;
+  line-height: 1.25;
+  text-align: center;
+  text-decoration: none;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  transition: background-color 0.25s ease-out, color 0.25s ease-out;
+}
+
+.button.block .button-content a:hover,
+.button.block .button-content a:focus-visible {
+  background-color: var(--button-hover);
+}
+
+.button.block .button-content a:focus-visible {
+  outline: 2px solid currentcolor;
+  outline-offset: 3px;
+}
+
+.button.block[data-appearance="link"] .button-content a:any-link {
+  display: inline;
+  padding: 0;
+  background: none;
+  color: var(--link-color);
+  font-weight: 400;
+  text-align: inherit;
+  text-decoration: underline;
+}
+
+.button.block[data-appearance="link"] .button-content a:hover,
+.button.block[data-appearance="link"] .button-content a:focus-visible {
+  color: var(--link-hover-color);
+}
