@@ -70,6 +70,10 @@ Externalize on, right-aligned Text Link, long labels, invalid and missing settin
 a missing link, and a dark section. No additional test framework is required for
 this static DOM decoration. In layout view, confirm that editing the link and
 settings and moving the block still work after installing the library entry.
+Setting-cell text changes and element replacements are observed so Inspector
+dropdown changes reapply alignment, appearance, style, and target without a reload.
+Check these updates without manually rerunning decoration, including after moving
+the block or editing it more than once.
 
 This project has no `library-metadata` renderer, so viewing the library document
 as a regular site page produces metadata asset 404s. The metadata is consumed by

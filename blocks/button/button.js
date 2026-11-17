@@ -1,4 +1,6 @@
-export default function decorate(block) {
+const observers = new WeakMap();
+
+function updateSettings(block) {
   const settings = {};
   const keys = ['open in new tab', 'open', 'externalize', 'alignment', 'appearance', 'style'];
 
@@ -24,4 +26,19 @@ export default function decorate(block) {
     if (link.target === '_blank') link.relList.add('noopener');
     else link.relList.remove('noopener');
   });
+}
+
+export default function decorate(block) {
+  observers.get(block)?.disconnect();
+  updateSettings(block);
+  const observer = new MutationObserver(() => {
+    if (!block.isConnected) {
+      observer.disconnect();
+      observers.delete(block);
+      return;
+    }
+    updateSettings(block);
+  });
+  observer.observe(block, { childList: true, characterData: true, subtree: true });
+  observers.set(block, observer);
 }
