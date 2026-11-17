@@ -32,13 +32,22 @@ The single hyperlink field exposes both its text and destination.
 
 Add the following rows to the existing library index's **options** sheet:
 
-| blocks | key | options |
-| --- | --- | --- |
-| button | Open | Current window=_self\|New tab=_blank |
-| button | Externalize | No=false\|Yes=true |
-| button | Alignment | Left=left\|Center=center\|Right=right |
-| button | Appearance | Button=button\|Text Link=link |
-| button | Style | Primary=primary\|Secondary=secondary |
+| blocks | key | values | type | checked | unchecked |
+| --- | --- | --- | --- | --- | --- |
+| button | Open | | checkbox | _blank | _self |
+| button | Externalize | | checkbox | true | false |
+| button | Alignment | Left=left\|Center=center\|Right=right | | | |
+| button | Appearance | Button=button\|Text Link=link | | | |
+| button | Style | Primary=primary\|Secondary=secondary | | | |
+
+The checkboxes require the customized Block Inspector from `ew-extensions`.
+The Open field is labeled **Open in a new tab** in Library Metadata. Checked
+stores `_blank`; unchecked stores `_self`, preserving existing content values.
+Configure the site's Inspector extension to load that deployed version. The
+standard Inspector can instead use `No=false|Yes=true` in the `values` column
+for Externalize and `Current window=_self|New tab=_blank` for Open, leaving
+the other columns blank. Externalize remains a demo setting with no URL
+transformation in either configuration.
 
 Upload the library template to the site's existing Blocks library folder, then
 add its row to the **blocks** sheet, following the existing rows:
