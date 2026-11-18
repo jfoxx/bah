@@ -1,0 +1,67 @@
+.alert {
+  --alert-accent: var(--teal-button-hover-color, #00636d);
+  --alert-background: #eef8f8;
+
+  display: grid;
+  gap: 12px;
+  border-inline-start: 6px solid var(--alert-accent);
+  padding: 20px;
+  background-color: var(--alert-background);
+  color: var(--text-color, #4c4c4c);
+  font-size: var(--body-font-size-s, 16px);
+  line-height: 1.6;
+  letter-spacing: 0;
+  overflow-wrap: anywhere;
+}
+
+.alert.urgent {
+  --alert-accent: #a51d2d;
+  --alert-background: #fff1f2;
+}
+
+.alert .alert-label {
+  color: var(--alert-accent);
+  font-weight: 800;
+}
+
+.alert > div > div,
+.alert > div:not(.alert-label) {
+  display: grid;
+  min-width: 0;
+  gap: 12px;
+}
+
+.alert p,
+.alert ul,
+.alert ol,
+.alert blockquote,
+.alert :is(h1, h2, h3, h4, h5, h6) {
+  margin: 0;
+}
+
+.alert :is(h1, h2, h3, h4, h5, h6) {
+  font-size: var(--heading-font-size-xs, 18px);
+  font-weight: 800;
+  letter-spacing: 0;
+}
+
+.alert a:any-link {
+  color: var(--alert-accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  overflow-wrap: anywhere;
+}
+
+.alert a.button:any-link {
+  background-color: transparent;
+  color: var(--alert-accent);
+}
+
+.alert a:hover {
+  text-decoration-thickness: 2px;
+}
+
+.alert a:focus-visible {
+  outline: 2px solid var(--alert-accent);
+  outline-offset: 4px;
+}
